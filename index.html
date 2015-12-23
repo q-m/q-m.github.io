@@ -17,6 +17,7 @@ tagline: some things we do
       </h3>
     </div>
     <div class="panel-body">
+      {% if post.image %}<img src="{{ post.image }}" class="post-preview-image" alt="" />{% endif %}
       {% if post.teaser %}{{ post.teaser }}{% else %}{{ post.content | strip_html | truncatewords: 80 }}{% endif %}
       <a href="{{ BASE_PATH }}{{ post.url }}">read more&nbsp;»</a>
     </div>
