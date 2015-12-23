@@ -1,0 +1,24 @@
+---
+layout: page
+title: Development Blog
+tagline: some things we do
+---
+{% include JB/setup %}
+
+{% for post in site.posts %}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <small class="pull-right text-muted">
+        {{ post.date | date_to_string }}{% if post.author %} by <a href="https://github.com/{{ post.author }}">{{ post.author }}</a>{% endif %}
+      </small>
+      <h3 class="panel-title">
+        <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+        {% if post.tagline %}<small>{{ post.tagline }}</small>{% endif %}
+      </h3>
+    </div>
+    <div class="panel-body">
+      {% if post.teaser %}{{ post.teaser }}{% else %}{{ post.content | strip_html | truncatewords: 80 }}{% endif %}
+      <a href="{{ BASE_PATH }}{{ post.url }}">read more&nbsp;»</a>
+    </div>
+  </div>
+{% endfor %}

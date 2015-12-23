@@ -52,20 +52,20 @@ body {
 }
 
 /* Hack for styling tables by default (since gh-pages doesn't allow custom plugins) */
-#content table {
+.pretty-table > table {
   width: 100%;
   margin-bottom: 20px;
 }
-#content table > thead > tr > th, #content table > thead > tr > td {
+.pretty-table > table > thead > tr > th, .pretty-table > table > thead > tr > td {
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
 }
-#content table > tbody > tr:not(:last-child) > th, #content table > tbody > tr:not(:last-child) > td {
+.pretty-table > table > tbody > tr:not(:last-child) > th, .pretty-table > table > tbody > tr:not(:last-child) > td {
   vertical-align: bottom;
   border-bottom: 1px solid #ddd;
 }
-#content table > thead > tr > th, #content table > thead > tr > td,
-#content table > tbody > tr > th, #content table > tbody > tr > td {
+.pretty-table > table > thead > tr > th, .pretty-table > table > thead > tr > td,
+.pretty-table > table > tbody > tr > th, .pretty-table > table > tbody > tr > td {
   padding: 8px;
   line-height: 1.42857;
 }
