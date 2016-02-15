@@ -3,7 +3,7 @@
 permalink: /:year/:month/:day/:title 
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
+highlighter: rouge
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
@@ -27,16 +27,7 @@ author :
 production_url : http://developers.thequestionmark.org
 
 # Markdown like on Github
-markdown: redcarpet
-redcarpet:
-  extensions:
-  - no_intra_emphasis
-  - fenced_code_blocks
-  - autolink
-  - tables
-  - strikethrough
-  - superscript
-  - with_to_data
+markdown: kramdown
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
