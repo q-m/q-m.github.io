@@ -10,7 +10,7 @@ image: https://upload.wikimedia.org/wikipedia/commons/8/86/Microsoft_Excel_2013_
 Again and again I hear someone explain about how they manage data and notice that somewhere spreadsheets
 play an important role. Very often, that's [Microsoft Excel](https://en.wikipedia.org/wiki/Microsoft_Excel).
 From big companies to small organisations like ours. And so it's surprising that it's such a hassle to
-reliable export data for use in other tools.
+reliably export data for use in other tools.
 
 What would be the most logical format to export to?
 [Comma separated values](https://en.wikipedia.org/wiki/Comma-separated_values) (CSV),
