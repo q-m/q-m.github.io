@@ -32,10 +32,10 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
   syntax_highlighter_opts:
-  span:
-    line_numbers: false
-  block:
-    line_numbers: false
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
