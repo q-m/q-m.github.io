@@ -12,7 +12,7 @@ for choosing values from a list in forms. Sometimes we want to show a list of
 existing values, but still allow the user to add his own. This can easily
 be done like this:
 
-{% gist be89a2f8bfec7c038084 select2_freeform.js %}
+{% include JB/gist gist_id="be89a2f8bfec7c038084" gist_file="select2_freeform.js" %}
 
 In our ingredient edit form it looks like this:
 
