@@ -8,6 +8,6 @@ teaser: 'When developing a program in Ruby, you may sometimes encounter a memory
 ---
 {% include JB/setup %}
 
-{% include JB/gist gist_id="f1097651c238b2f7f11d " gist_file="README.md" %}
+{% include JB/gist gist_id="f1097651c238b2f7f11d" gist_file="README.md" %}
 
 See the code in [this gist](https://gist.github.com/wvengen/f1097651c238b2f7f11d).
