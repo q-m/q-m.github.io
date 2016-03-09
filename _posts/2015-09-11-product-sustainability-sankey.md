@@ -39,7 +39,7 @@ it to show how a total risk on something undesirable in the world consists of
 various themes and sub-themes.
 
 <div class="text-right text-muted">see full <a href="http://bl.ocks.org/wvengen/cab9b01816490edb7083">bl.ock</a> or <a href="https://gist.github.com/wvengen/cab9b01816490edb7083">gist</a></div>
-<iframe src="http://bl.ocks.org/wvengen/raw/cab9b01816490edb7083/" width="100%" height="520" frameBorder="0"></iframe>
+<iframe src="http://cdn.rawgit.com/wvengen/cab9b01816490edb7083/raw/663afbd79d2cccbe2c75ee9ea2d05d1b6f08e616/index.html" width="100%" height="520" frameBorder="0"></iframe>
 
 This chart shows on the left the total impact or risk. This is divided into
 the different themes that a product is scored on, here that's environment and
