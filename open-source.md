@@ -17,6 +17,7 @@ to improve sustainability.
 
 | When       | Who                                         | What                                    | Where                                                                                           |
 |:----------:+:-------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2016-04-14 | [wvengen](https://github.com/wvengen)       | Image recognition experiment            | [rabbiteye-exp](https://github.com/q-m/rabbiteye-exp)
 | 2015-12-30 | [wvengen](https://github.com/wvengen)       | Improve error message                   | [react-native#5022](https://github.com/facebook/react-native/pull/5022)
 | 2015-12-09 | [wvengen](https://github.com/wvengen)       | Release react-native Android component  | [react-native-simplemenu-android](https://github.com/q-m/react-native-simplemenu-android)
 | 2015-09-19 | [wvengen](https://github.com/wvengen)       | Que integration for Appsignal           | [appsignal#70](https://github.com/appsignal/appsignal/pull/70)
