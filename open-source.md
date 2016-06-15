@@ -20,6 +20,7 @@ to improve sustainability.
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
 | 2016-06-14 | [wengen](https://github.com/wvengen)                | Add (de-)serialization options          | [redux-api#86](https://github.com/lexich/redux-api/pull/86)
 | 2016-06-06 | [martijnbleeker](https://github.com/martijnbleeker) | Add pagination size buttons             | [brightcontent#43](https://github.com/brightin/brightcontent/pull/43)
+| 2016-06-01 | [wvengen](https://github.com/wvengen)               | Expand phantomjs settings               | [phantom-render-stream#98](https://github.com/e-conomic/phantom-render-stream/pull/98)
 | 2016-04-14 | [wvengen](https://github.com/wvengen)               | Image recognition experiment            | [rabbiteye-exp](https://github.com/q-m/rabbiteye-exp)
 | 2015-12-30 | [wvengen](https://github.com/wvengen)               | Improve error message                   | [react-native#5022](https://github.com/facebook/react-native/pull/5022)
 | 2015-12-09 | [wvengen](https://github.com/wvengen)               | Release react-native Android component  | [react-native-simplemenu-android](https://github.com/q-m/react-native-simplemenu-android)
