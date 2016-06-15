@@ -16,8 +16,9 @@ to improve sustainability.
 
 ## Contributions
 
-| When       | Who                                         | What                                    | Where                                                                                           |
-|:----------:+:-------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| When       | Who                                                 | What                                    | Where                                                                                           |
+|:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2016-06-14 | [wengen](https://github.com/wvengen)                | Add (de-)serialization options          | [redux-api#86](https://github.com/lexich/redux-api/pull/86)
 | 2016-06-06 | [martijnbleeker](https://github.com/martijnbleeker) | Add pagination size buttons             | [brightcontent#43](https://github.com/brightin/brightcontent/pull/43)
 | 2016-04-14 | [wvengen](https://github.com/wvengen)               | Image recognition experiment            | [rabbiteye-exp](https://github.com/q-m/rabbiteye-exp)
 | 2015-12-30 | [wvengen](https://github.com/wvengen)               | Improve error message                   | [react-native#5022](https://github.com/facebook/react-native/pull/5022)
