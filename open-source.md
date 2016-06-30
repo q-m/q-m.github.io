@@ -18,6 +18,7 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2016-06-30 | [s-andringa](https://github.com/s-andringa)         | Que integration for Bugsnag             | [bugsnag-ruby#305](https://github.com/bugsnag/bugsnag-ruby/pull/305)
 | 2016-06-14 | [wvengen](https://github.com/wvengen)               | Add (de-)serialization options          | [redux-api#86](https://github.com/lexich/redux-api/pull/86)
 | 2016-06-06 | [martijnbleeker](https://github.com/martijnbleeker) | Add pagination size buttons             | [brightcontent#43](https://github.com/brightin/brightcontent/pull/43)
 | 2016-06-01 | [wvengen](https://github.com/wvengen)               | Expand phantomjs settings               | [phantom-render-stream#98](https://github.com/e-conomic/phantom-render-stream/pull/98)
