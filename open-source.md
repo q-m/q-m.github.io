@@ -18,6 +18,11 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2016-10-14 | [wvengen](https://github.com/wvengen)               | Fix react-bootstrap tooltips in IE      | [dom-helpers#12](https://github.com/react-bootstrap/dom-helpers/pull/12)
+| 2016-09-27 | [madhums](https://github.com/madhums)               | Allow setting people property once      | [rn-redux-mixpanel#14](https://github.com/danscan/rn-redux-mixpanel/pull/14)
+| 2016-09-14 | [martijnbleeker](https://github.com/martijnbleeker) | Fix feature specs                       | [embedly-ruby#33](https://github.com/embedly/embedly-ruby/pull/33)
+| 2016-08-04 | [madhums](https://github.com/madhums)               | Address deprecation issue               | [react-native-awesome-button#14](https://github.com/larsvinter/react-native-awesome-button/pull/14)
+| 2016-06-30 | [s-andringa](https://github.com/s-andringa)         | Improve environment handling            | [bugsnag-ruby#310](https://github.com/bugsnag/bugsnag-ruby/pull/310)
 | 2016-06-30 | [s-andringa](https://github.com/s-andringa)         | Que integration for Bugsnag             | [bugsnag-ruby#305](https://github.com/bugsnag/bugsnag-ruby/pull/305)
 | 2016-06-14 | [wvengen](https://github.com/wvengen)               | Add (de-)serialization options          | [redux-api#86](https://github.com/lexich/redux-api/pull/86)
 | 2016-06-06 | [martijnbleeker](https://github.com/martijnbleeker) | Add pagination size buttons             | [brightcontent#43](https://github.com/brightin/brightcontent/pull/43)
