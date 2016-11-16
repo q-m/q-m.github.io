@@ -1,0 +1,795 @@
+swagger: '2.0'
+info:
+  title: Questionmark API v1.1
+  version: '1.1.0'
+  description: |-
+    [Questionmark](http://www.thequestionmark.org/)
+    stands for your right to know the story behind the products you buy: where they come from
+    and how they are produced. We believe that this type of transparency is crucial to developing
+    sustainable supply chains. Our mission is to make consumers more aware of the choices they
+    have when buying a product and also to urge companies to become more transparent.
+
+    The Questionmark API allows access to this information by third parties. The more consumers
+    see this information, the more people will be able to make a sustainable choice,
+    the more producers have an incentive to become more sustainable.
+
+    [Lees meer](http://www.thequestionmark.org/over) over, or
+    [read more](http://www.thequestionmark.org/en/questionmark-organisation) about
+    Questionmark.
+
+    ### License
+
+    API usage is free for non-commercial use, as long as you notify us and provide proper attribution
+    ([CC-BY-NC](https://creativecommons.org/licenses/by-nc/4.0/)).
+    If you plan to make large amounts of queries (sustained >15 per minute),
+    please [contact](http://thequestionmark.org/contact) us first.
+    For commercial use, please contact [QM intelligence](http://www.qmintelligence.com/).
+
+    ### Beta status
+
+    Please note that this API has a long-running beta-status. Not all imaginable endpoints
+    are present, and some parameters may be different than expected (because of historical reasons).
+    With a future 2.0 version of the API, this will be cleaned up.
+
+    This documentation is also not fully complete. Be careful when relying on undocumented features,
+    as they may change without notice.
+
+    ### Technical details
+
+    * The base url for the API is `https://api-c.thequestionmark.org/api/v1.1`, so e.g. the product list
+      endpoint can be accessed at `https://api-c.thequestionmark.org/api/v1.1/products`.
+
+    * Most endpoints return JSON by default, but to make sure you'll always receive JSON (also
+      in case of errors), you have to either add an `Accept: application/json` header to each request,
+      or append `.json` to the url (e.g. `/products.json` for the product list).
+
+host: api-c.thequestionmark.org
+schemes:
+  - 'https'
+basePath: /api/v1.1
+
+produces:
+  - 'application/json'
+
+paths:
+  /products:
+    get:
+      summary: list products
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sort'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              products:
+                type: array
+                items:
+                  $ref: '#/definitions/Product'
+              total:
+                $ref: '#/definitions/total'
+  /products/{id}:
+    get:
+      summary: get product by id
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Product'
+        404:
+          description: product not found
+          schema:
+            $ref: '#/definitions/Error'
+  /products/{barcode}:
+    get:
+      summary: get product by barcode
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/parameters/barcodeInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Product'
+        404:
+          description: product not found
+          schema:
+            $ref: '#/definitions/Error'
+  /products/{id}/alternatives:
+    get:
+      summary: list alternatives for a product
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              products:
+                type: array
+                items:
+                  $ref: '#/definitions/Product'
+              total:
+                $ref: '#/definitions/total'
+        404:
+          description: product not found
+          schema:
+            $ref: '#/definitions/Error'
+  /products/brands:
+    get:
+      summary: list brands for a product query
+      tags:
+        - Brands
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sort'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              brands:
+                type: array
+                items:
+                  $ref: '#/definitions/Brand'
+              total:
+                $ref: '#/definitions/total'
+  /products/retailers:
+    get:
+      summary: list retailers for a product query
+      tags:
+        - Retailers
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sort'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              retailers:
+                type: array
+                items:
+                  $ref: '#/definitions/Retailer'
+              total:
+                $ref: '#/definitions/total'
+
+  /products/usages:
+    get:
+      summary: list usages (categories) for a product query
+      tags:
+        - Usages
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sort'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              usages:
+                type: array
+                items:
+                  $ref: '#/definitions/Usage'
+              total:
+                $ref: '#/definitions/total'
+  /products/stories:
+    get:
+      summary: list stories for a product query
+      tags:
+        - Stories
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sort'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              stories:
+                type: array
+                items:
+                  # @todo fix API to return: $ref: '#/parameters/Story'
+                  type: object
+                  properties:
+                    url:
+                      type: string
+              total:
+                $ref: '#/definitions/total'
+
+
+  /retailers:
+    get:
+      summary: list retailers
+      tags:
+        - Retailers
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              products:
+                type: array
+                items:
+                  $ref: '#/definitions/Retailer'
+              total:
+                $ref: '#/definitions/total'
+
+  /certificates:
+    get:
+      summary: list certificates
+      tags:
+        - Certificates
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              certificates:
+                type: array
+                items:
+                  $ref: '#/definitions/Certificate'
+              total:
+                $ref: '#/definitions/total'
+  /certificates/{id}:
+    get:
+      summary: get certificate by id
+      tags:
+        - Certificates
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Certificate'
+        404:
+          description: certificate not found
+          schema:
+            $ref: '#/definitions/Error'
+
+  /health_groups:
+    get:
+      summary: list health groups
+      tags:
+        - Scoring
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              health_groups:
+                type: array
+                items:
+                  $ref: '#/definitions/HealthGroup'
+              total:
+                $ref: '#/definitions/total'
+  /health_groups/{id}:
+    get:
+      summary: get health group by id
+      tags:
+        - Scoring
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/HealthGroup'
+        404:
+          description: health group not found
+          schema:
+            $ref: '#/definitions/Error'
+
+  /products/{id}/stories:
+    get:
+      summary: list stories for a product
+      tags:
+        - Stories
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              stories:
+                type: array
+                items:
+                  $ref: '#/definitions/Story'
+              total:
+                $ref: '#/definitions/total'
+        404:
+          description: product not found
+          schema:
+            $ref: '#/definitions/Error'
+
+
+
+parameters:
+  # url parameters
+  idInUrl:
+    name: id
+    type: integer
+    in: path
+    minimum: 1
+    required: true
+  barcodeInUrl:
+    name: barcode
+    type: string
+    in: path
+    minLength: 8
+    maxLength: 13
+    pattern: '[0-9]{8,13}'
+    required: true
+
+  # query parameters
+  page:
+    name: page
+    type: integer
+    in: query
+    description: page number
+    minimum: 0
+    default: 0
+    required: false
+  per_page:
+    name: per_page
+    type: integer
+    in: query
+    description: items per page
+    minimum: 0
+    default: 20
+    maximum: 500
+    required: false
+
+  # query parameter collections
+  q:
+    name: q
+    type: string
+    in: query
+    description: search query (name, brand or barcode)
+    required: false
+  usage_id:
+    name: usage_id
+    type: integer
+    in: query
+    description: restrict by usage (category)
+    required: false
+  brand_id:
+    name: brand_id
+    type: integer
+    in: query
+    description: restrict to brand
+    required: false
+  brand_ids:
+    name: brand_ids[]
+    type: integer
+    in: query
+    description: restrict to brand, repeat parameter
+    required: false
+  retailer_id:
+    name: retailer_id
+    type: integer
+    in: query
+    description: restrict to retailer
+    required: false
+  retailer_ids:
+    name: retailer_ids[]
+    type: integer
+    in: query
+    description: restrict by multiple usages (category), repeat parameter
+    required: false
+  scored:
+    name: scored
+    type: boolean
+    enum: [true]
+    in: query
+    description: require a published (health or sustainability) score
+    required: false
+  sustainability_scored:
+    name: sustainability_scored
+    type: boolean
+    in: query
+    description: require a published sustainability score
+    required: false
+  personal_health_scored:
+    name: personal_health_scored
+    type: boolean
+    in: query
+    description: require a published health score
+    required: false
+  score:
+    name: score
+    type: integer
+    in: query
+    description: restrict by sustainability score
+    minimum: 1
+    maximum: 10
+    required: false
+  personal_health_score:
+    name: personal_health_score
+    type: string
+    in: query
+    description: restrict by health score
+    enum: ['A', 'B1', 'B2', 'C1', 'C2']
+    required: false
+  environment_score:
+    name: environment_score
+    type: integer
+    in: query
+    description: restrict by environment score
+    minimum: 1
+    maximum: 10
+    required: false
+  social_score:
+    name: social_score
+    type: integer
+    in: query
+    description: restrict by social score
+    minimum: 1
+    maximum: 10
+    required: false
+  animals_score:
+    name: animals_score
+    type: integer
+    in: query
+    description: restrict by animals score
+    minimum: 1
+    maximum: 10
+    required: false
+  sort:
+    name: sort
+    type: string
+    in: query
+    description: sorting order
+    enum:
+    - name
+    - name DESC
+    - score
+    - score ASC
+    - personal_health_score
+    - personal_health_score DESC
+    - environment_score
+    - environment_score ASC
+    - social_score
+    - social_score ASC
+    - animals_score
+    - animals_score ASC
+    required: false
+  ids:
+    name: ids[]
+    type: integer
+    in: query
+    description: fetch multiple products by id, repeat parameter
+    required: false
+
+  email:
+    name: email
+    type: string
+    in: query
+    required: true
+  password:
+    name: password
+    type: string
+    in: query
+    required: true
+  app:
+    name: app
+    type: string
+    in: query
+    enum: ['questionmark-app', 'checkit']
+    required: false
+
+definitions:
+  # models
+  Brand:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+  Retailer:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      priority:
+        type: ['integer', 'null']
+        description: well-known retailers have a higher priority
+  Certificate:
+    type: object
+    description: Certificate (e.g. EU Organic, Weidemelk, Vegetarisch, etc.)
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      image_url:
+        type: object
+        properties:
+          thumb:
+            type: string
+            description: url of image thumbnail
+  ProductIngredient:
+    type: object
+    properties:
+      ingredient:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+  ProductNutrient:
+    type: object
+    properties:
+      name:
+        type: string
+        description: nutrient name
+      value:
+        type: number
+      unit:
+        type: string
+        description: nutrient unit (unit / per)
+  HealthGroup:
+    type: object
+    description: each product's health group determines how its health score is determined, based on rules
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      # too unclear to show right now
+      #rules:
+      #  type: array
+      #  items:
+      #    $ref: '#/definitions/HealthGroupRule'
+  HealthGroupRule:
+    type: object
+    description: health group rules determine a product's health score, used properties depend on its type (if you need more info, please contact us so that we can expand this)
+    properties:
+      type:
+        type: string
+        enum: ['nutrient_rule' ,'nutrient_comparison_rule', 'ingredient_base_rule', 'static_rule']
+      nutrient_code:
+        type: string
+      cmp:
+        type: string
+        enum: ['<', '≤', '>', '≥']
+      value:
+        type: number
+      unit:
+        type: string
+      per:
+        type: string
+      score:
+        type: string
+        enum: ['A', 'B1', 'B2', 'C1', 'C2']
+      of:
+        type: string
+      ingredient_base_type:
+        type: string
+      fat_trans:
+        type: boolean
+      present:
+        type: boolean
+  SimpleUsage:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+  Usage:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      children:
+        type: array
+        items:
+          - $ref: '#/definitions/Usage'
+  Story:
+    type: object
+    properties:
+      id:
+        type: integer
+      url:
+        type: string
+      title:
+        type: string
+      description:
+        type: ['null', 'string']
+      type:
+        type: 'string'
+        enum: ['photo', 'video', 'link', 'rich', 'html']
+      image:
+        type: object
+        properties:
+          url:
+            type: string
+          width:
+            type: number
+          height:
+            type: number
+  Product:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        description: product name
+      brand_name:
+        type: string
+        description: product brand
+      score:
+        type: ['integer', 'null']
+        description: sustainability score (1-10)
+      personal_health_score:
+        type: ['string', 'null']
+        description: health score
+        enum: ['A', 'B1', 'B2', 'C1', 'C2']
+      theme_scores:
+        type: array
+        items:
+          type: object
+          properties:
+            theme_key:
+              type: string
+              description: sustainability theme (environment, social or animals)
+            score:
+              type: integer
+              description: sustainability theme score (1-10)
+      product_nutrients:
+        type: array
+        items:
+          - $ref: '#/definitions/ProductNutrient'
+      product_ingredients:
+        type: array
+        items:
+          - $ref: '#/definitions/ProductIngredient'
+      usages:
+        type: array
+        description: hierarchical list of product usages (categories)
+        items:
+          - $ref: '#/definitions/SimpleUsage'
+      certificates:
+        type: array
+        items:
+          - $ref: '#/definitions/Certificate'
+      retailers:
+        type: array
+        items:
+          $ref: '#/definitions/Retailer'
+      image_urls:
+        type: array
+        description: product image (0-1 images)
+        items:
+          type: object
+          properties:
+            thumb:
+              type: string
+              description: url of image thumbnail
+            medium:
+              type: string
+              description: url of medium-size image
+  total:
+    type: integer
+    description: total number of items
+    minimum: 0
+
+  Error:
+    type: object
+    properties:
+      status:
+        type: string
+        description: error code
+      error:
+        type: string
+        description: short human-readable error message
