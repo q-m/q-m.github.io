@@ -97,6 +97,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
@@ -188,6 +189,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
@@ -224,6 +226,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
@@ -261,6 +264,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
@@ -297,6 +301,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
@@ -414,6 +419,22 @@ paths:
           description: health group not found
           schema:
             $ref: '#/definitions/Error'
+  /categories.json:
+    get:
+      summary: list categories
+      x-internal: true
+      tags:
+        - Usages
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              categories:
+                type: array
+                items:
+                  $ref: '#/definitions/Category'
 
   /products/{id}/stories:
     get:
@@ -489,6 +510,13 @@ parameters:
     type: integer
     in: query
     description: restrict by usage (category)
+    required: false
+  category_id:
+    name: category_id
+    type: integer
+    in: query
+    description: restrict by front-end category
+    x-internal: true
     required: false
   brand_id:
     name: brand_id
@@ -683,6 +711,7 @@ definitions:
       #  items:
       #    $ref: '#/definitions/HealthGroupRule'
   HealthGroupRule:
+    x-internal: true
     type: object
     description: health group rules determine a product's health score, used properties depend on its type (if you need more info, please contact us so that we can expand this)
     properties:
@@ -729,6 +758,18 @@ definitions:
         type: array
         items:
           - $ref: '#/definitions/Usage'
+  Category:
+    x-internal: true
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      children:
+        type: array
+        items:
+          - $ref: '#/definitions/Category'
   Story:
     type: object
     properties:

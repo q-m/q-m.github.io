@@ -60,6 +60,7 @@
           if(window.SwaggerTranslator) {
             window.SwaggerTranslator.translate();
           }
+
         },
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
@@ -68,6 +69,21 @@
         jsonEditor: false,
         defaultModelRendering: 'schema',
         showRequestHeaders: false
+      });
+
+      // filter out internal tags, operations and parameters before rendering
+      var oldSuccess = window.swaggerUi.getOption('success');
+      function filterInternal(x) { return x['x-internal'] !== true && (x['vendorExtensions']||{})['x-internal'] !== true; };
+      window.swaggerUi.setOption('success', function() {
+        var client = window.swaggerUi.api;
+        client.apisArray = client.apisArray.filter(filterInternal);
+        client.apisArray.forEach(function(api) {
+          api.operationsArray = api.operationsArray.filter(filterInternal);
+          api.operationsArray.forEach(function(op) {
+            op.parameters = op.parameters.filter(filterInternal);
+          });
+        });
+        return oldSuccess();
       });
 
       window.swaggerUi.load();
