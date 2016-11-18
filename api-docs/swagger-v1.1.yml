@@ -793,3 +793,9 @@ definitions:
       error:
         type: string
         description: short human-readable error message
+
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: authentication_token
+    in: query
