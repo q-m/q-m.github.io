@@ -34,7 +34,7 @@ info:
     This documentation is also not fully complete. Be careful when relying on undocumented features,
     as they may change without notice.
 
-    ### Technical details
+    ### Technical notes
 
     * The base url for the API is `https://api-c.thequestionmark.org/api/v1.1`, so e.g. the product list
       endpoint can be accessed at `https://api-c.thequestionmark.org/api/v1.1/products`.
@@ -42,6 +42,41 @@ info:
     * Most endpoints return JSON by default, but to make sure you'll always receive JSON (also
       in case of errors), you have to either add an `Accept: application/json` header to each request,
       or append `.json` to the url (e.g. `/products.json` for the product list).
+
+    ### Concepts
+
+    **Products** are (food) products from the supermarket (and elsewhere) as seen by consumers, each
+    receiving their own sustainability and health score.
+
+    The _sustainability score_ is a number from 1 to 10, with 10 the best score.
+    It is the average of one or more theme scores (_environment_, _social_ and _animals_). This score
+    is a rating as compared with other products in the same comparison group.
+
+    The _health score_ has a scale consisting of `C2`, `C1`, `B1`, `B2` and `A` (with `A` the best score),
+    which correspond to _Nee_, _Niet echt_, _Matig_, _Redelijk_ and _Ja_ respectively. This score is
+    awarded according to the product's health group. For historical reasons, this score is sometimes called
+    _personal health score_.
+
+    [Read more about the scoring methodology](http://www.thequestionmark.org/en/method).
+
+    **Retailers** are most importantly supermarkets. We focus on 8 of about 50, being
+    [Albert Heijn](http://www.ah.nl/), [Jumbo](http://www.jumbo.com/), [Plus](http://www.plus.nl/),
+    [Coop](http://www.coop.nl/), [Lidl](http://www.lidl.nl/), [Aldi](http://www.aldi.nl/),
+    [Marqt](http://www.marqt.nl/) and [EkoPlaza](http://www.ekoplaza.nl/), which together
+    cover about 80% of the market.
+
+    **Usages** are the main [taxonomy](https://en.wikipedia.org/wiki/Taxonomy_%28general%29) we
+    use to categorize products. Other categorizations, like the browsing categories on our
+    website, comparison groups and health groups, are derived from the usage.
+
+    **Certificates** are certifications, like
+    [EU Organic](http://ec.europa.eu/agriculture/organic/organic-farming/what-is-organic-farming/organic-certification_en),
+    [Fairtrade](http://www.fairtrade.net/), [MSC](http://www.msc.org/) or [Vegan](https://www.vegansociety.com/), as found
+    on the package of the product.
+
+    **Stories** are websites, videos, images, etc. that relate to products, based on the
+    product, its brand, and its ingredients. They provide a background for consumers to read
+    more about the product, and for content providers to share their stories.
 
 host: api-c.thequestionmark.org
 schemes:
