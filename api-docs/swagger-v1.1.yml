@@ -460,6 +460,55 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
+  /user/sign_in:
+    post:
+      summary: login with email address
+      x-internal: true
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/parameters/email'
+        - $ref: '#/parameters/password'
+        - $ref: '#/parameters/app'
+      responses:
+        200:
+          description: login failed (`success` is `false`) or succeeded
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              error:
+                type: string
+                description: login failure reason (only present when `success` is `false`)
+              user:
+                $ref: '#/definitions/User'
+  /user/status:
+    get:
+      summary: get user info
+      x-internal: true
+      tags:
+        - Users
+      responses:
+        200:
+          description: success (always)
+          schema:
+            type: object
+            properties:
+              logged_in:
+                type: boolean
+              user:
+                $ref: '#/definitions/User'
+  /user/sign_out:
+    get:
+      summary: logout (client needs to forget authentication_token!)
+      x-internal: true
+      tags:
+        - Users
+      responses:
+        204:
+          description: success
+
 
 
 parameters:
@@ -627,17 +676,17 @@ parameters:
     required: false
 
   email:
-    name: email
+    name: user[email]
     type: string
     in: query
     required: true
   password:
-    name: password
+    name: user[password]
     type: string
     in: query
     required: true
   app:
-    name: app
+    name: user[app]
     type: string
     in: query
     enum: ['questionmark-app', 'checkit']
@@ -855,6 +904,73 @@ definitions:
             medium:
               type: string
               description: url of medium-size image
+  User:
+    x-internal: true
+    type: object
+    properties:
+      id:
+        type: integer
+      preferences:
+        type: object
+        properties:
+          environment:
+            type: string
+            enum: ['less_important', 'more_important']
+          social:
+            type: string
+            enum: ['less_important', 'more_important']
+          animals:
+            type: string
+            enum: ['less_important', 'more_important']
+      retailer_ids:
+        type: array
+        description: preferred retailers
+        items:
+          type: integer
+      preferences_set:
+        type: boolean
+      can_preview:
+        type: boolean
+        description: whether the user can view staged scores
+      device_uuid:
+        type: string
+      email:
+        type: string
+        description: email address (only for email login)
+      login_provider:
+        type: string
+        description: external login provider (only for external login)
+      uid:
+        type: string
+        description: external user identifier (only for external login)
+      name:
+        type: string
+        description: name (only for external login and owners)
+      username:
+        type: string
+        description: username (only for external login)
+      gender:
+        type: string
+        description: gender (only for external login)
+      location:
+        type: string
+        description: location (only for external login)
+      locale:
+        type: string
+      created:
+        type: string
+      liked_resource_gids:
+        type: array
+        description: resources liked
+        items:
+          type: string
+      flagged_resource_gids:
+        type: array
+        description: resources flagged for removal
+        items:
+          type: string
+      # @todo owner fields
+
   total:
     type: integer
     description: total number of items

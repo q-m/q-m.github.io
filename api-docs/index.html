@@ -83,6 +83,7 @@
             op.parameters = op.parameters.filter(filterInternal);
           });
         });
+        client.apisArray = client.apisArray.filter(function(x) { return x.operationsArray.length > 0 });
         return oldSuccess();
       });
 
