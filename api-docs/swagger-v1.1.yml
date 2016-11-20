@@ -17,10 +17,11 @@ info:
     [read more](http://www.thequestionmark.org/en/questionmark-organisation) about
     Questionmark.
 
-    ### License
+    ### Terms and license
 
     API usage is free for non-commercial use, as long as you notify us and provide proper attribution
-    ([CC-BY-NC](https://creativecommons.org/licenses/by-nc/4.0/)).
+    ([CC-BY-NC](https://creativecommons.org/licenses/by-nc/4.0/)). This applies to public endpoints and
+    parameters documented here, requiring no authentication.
     If you plan to make large amounts of queries (sustained >15 per minute),
     please [contact](http://thequestionmark.org/contact) us first.
     For commercial use, please contact [QM intelligence](http://www.qmintelligence.com/).
@@ -78,6 +79,8 @@ info:
     product, its brand, and its ingredients. They provide a background for consumers to read
     more about the product, and for content providers to share their stories.
 
+  # please note that endpoints and parameters marked with `x-internal: false` are not considered to be public
+
 host: api-c.thequestionmark.org
 schemes:
   - 'https'
@@ -95,6 +98,7 @@ paths:
       parameters:
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/detailProduct'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
         - $ref: '#/parameters/category_id'
@@ -110,7 +114,7 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/sort'
+        - $ref: '#/parameters/sortProducts'
         - $ref: '#/parameters/ids'
       responses:
         200:
@@ -131,6 +135,7 @@ paths:
         - Products
       parameters:
         - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/detailProduct'
       responses:
         200:
           description: success
@@ -147,6 +152,7 @@ paths:
         - Products
       parameters:
         - $ref: '#/parameters/barcodeInUrl'
+        - $ref: '#/parameters/detailProduct'
       responses:
         200:
           description: success
@@ -202,7 +208,6 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/sort'
         - $ref: '#/parameters/ids'
       responses:
         200:
@@ -239,7 +244,6 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/sort'
         - $ref: '#/parameters/ids'
       responses:
         200:
@@ -277,7 +281,6 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/sort'
         - $ref: '#/parameters/ids'
       responses:
         200:
@@ -314,7 +317,6 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/sort'
         - $ref: '#/parameters/ids'
       responses:
         200:
@@ -332,7 +334,45 @@ paths:
                       type: string
               total:
                 $ref: '#/definitions/total'
-
+  /products/ingredients:
+    get:
+      summary: list ingredients for a product query
+      x-internal: true
+      tags:
+        - Ingredients
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/detailIngredient'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sortProductIngredients'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              stories:
+                type: array
+                items:
+                  $ref: '#/definitions/Ingredient'
+              total:
+                $ref: '#/definitions/total'
 
   /retailers:
     get:
@@ -457,6 +497,25 @@ paths:
                 $ref: '#/definitions/total'
         404:
           description: product not found
+          schema:
+            $ref: '#/definitions/Error'
+
+  /ingredients/{id}:
+    get:
+      summary: get ingredient
+      x-internal: true
+      tags:
+        - Ingredients
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/detailIngredient'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Ingredient'
+        404:
+          description: ingredient not found
           schema:
             $ref: '#/definitions/Error'
 
@@ -649,7 +708,7 @@ parameters:
     minimum: 1
     maximum: 10
     required: false
-  sort:
+  sortProducts:
     name: sort
     type: string
     in: query
@@ -668,11 +727,39 @@ parameters:
     - animals_score
     - animals_score ASC
     required: false
+  sortProductIngredients:
+    x-internal: true
+    name: sort
+    type: string
+    in: query
+    description: sorting order (requires owner)
+    enum:
+    - name
+    - name DESC
+    - product_count
+    - product_count ASC
+    required: false
   ids:
     name: ids[]
     type: integer
     in: query
     description: fetch multiple products by id, repeat parameter
+    required: false
+  detailProduct:
+    name: detail
+    x-internal: true
+    type: string
+    enum: ['list', 'default', 'health', 'biz']
+    in: query
+    description: detail level
+    required: false
+  detailIngredient:
+    name: detail
+    x-internal: true
+    type: string
+    enum: ['default', 'biz']
+    in: query
+    description: detail level (biz requires owner)
     required: false
 
   email:
@@ -725,16 +812,18 @@ definitions:
           thumb:
             type: string
             description: url of image thumbnail
+  Ingredient:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
   ProductIngredient:
     type: object
     properties:
       ingredient:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
+        $ref: '#/definitions/Ingredient'
   ProductNutrient:
     type: object
     properties:
