@@ -73,6 +73,17 @@
         schemes: ['http']
       });
 
+      // replace terms and conditions before rendering
+      var oldSuccess = window.swaggerUi.getOption('success');
+      window.swaggerUi.setOption('success', function() {
+        var client = window.swaggerUi.api;
+        client.info.description = client.info.description.replace(
+          new RegExp('(### Terms and license)[^]*?(###)'),
+          '$1\nYou are viewing the internal version of the API documentation.\n$2'
+        );
+        return oldSuccess();
+      });
+
       window.swaggerUi.load();
 
       function log() {
