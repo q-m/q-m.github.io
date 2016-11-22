@@ -60,6 +60,9 @@ info:
 
     [Read more about the scoring methodology](http://www.thequestionmark.org/en/method).
 
+    **Product alternatives** are similar products (currently based on usage, but that may change), sorted
+    by most sustainable first.
+
     **Retailers** are most importantly supermarkets. We focus on 8 of about 50, being
     [Albert Heijn](http://www.ah.nl/), [Jumbo](http://www.jumbo.com/), [Plus](http://www.plus.nl/),
     [Coop](http://www.coop.nl/), [Lidl](http://www.lidl.nl/), [Aldi](http://www.aldi.nl/),
@@ -169,6 +172,26 @@ paths:
         - Products
       parameters:
         - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/detailProduct'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sortProducts'
+        - $ref: '#/parameters/ids'
       responses:
         200:
           description: success
