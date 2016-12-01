@@ -936,6 +936,7 @@ parameters:
   password:
     name: user[password]
     type: string
+    format: password
     in: query
     required: true
   app:
@@ -1228,6 +1229,7 @@ definitions:
     properties:
       generated_on:
         type: string
+        format: date
         description: date score was generated
       score:
         $ref: '#/definitions/ScoringReportScore'
