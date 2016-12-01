@@ -109,6 +109,8 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -182,6 +184,8 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -223,6 +227,8 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -259,6 +265,8 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -296,6 +304,8 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -317,6 +327,47 @@ paths:
                   $ref: '#/definitions/Usage'
               total:
                 $ref: '#/definitions/total'
+  /products/comparison_groups:
+    get:
+      summary: list comparison groups for a product query
+      x-internal: true
+      tags:
+        - Scoring
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sortProductIngredients'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              stories:
+                type: array
+                items:
+                  $ref: '#/definitions/ComparisonGroup'
+              total:
+                $ref: '#/definitions/total'
+
   /products/stories:
     get:
       summary: list stories for a product query
@@ -332,6 +383,8 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -374,6 +427,8 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -452,6 +507,7 @@ paths:
   /health_groups:
     get:
       summary: list health groups
+      x-internal: true
       tags:
         - Scoring
       responses:
@@ -469,6 +525,7 @@ paths:
   /health_groups/{id}:
     get:
       summary: get health group by id
+      x-internal: true
       tags:
         - Scoring
       parameters:
@@ -518,6 +575,69 @@ paths:
                   $ref: '#/definitions/Story'
               total:
                 $ref: '#/definitions/total'
+        404:
+          description: product not found
+          schema:
+            $ref: '#/definitions/Error'
+
+  /products/histogram:
+    get:
+      summary: get histogram for a product query (requires owner)
+      x-internal: true
+      tags:
+        - Scoring
+      parameters:
+        - $ref: '#/parameters/histogramGroupBy'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              products_histogram:
+                $ref: '#/definitions/ProductsHistogram'
+        401:
+          description: no authenticated owner
+          schema:
+            $ref: '#/definitions/Error'
+  /products/{id}/scoring_report:
+    get:
+      summary: get product scoring report (requires owner of product)
+      x-internal: true
+      tags:
+        - Scoring
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              scoring_report:
+                $ref: '#/definitions/ScoringReport'
+        401:
+          description: product not owned by authenticated user
+          schema:
+            $ref: '#/definitions/Error'
         404:
           description: product not found
           schema:
@@ -673,6 +793,20 @@ parameters:
     in: query
     description: restrict by multiple usages (category), repeat parameter
     required: false
+  comparison_group_id:
+    name: comparison_group_id
+    type: integer
+    in: query
+    description: restrict to comparison group
+    x-internal: true
+    required: false
+  health_group_id:
+    name: health_group_id
+    type: integer
+    in: query
+    description: restrict to health group
+    x-internal: true
+    required: false
   scored:
     name: scored
     type: boolean
@@ -783,6 +917,15 @@ parameters:
     enum: ['default', 'biz']
     in: query
     description: detail level (biz requires owner)
+    required: false
+
+  histogramGroupBy:
+    name: group_by
+    type: string
+    enum: ['sustainability_score', 'personal_health_score']
+    x-internal: true
+    in: query
+    description: x-axis of the histogram
     required: false
 
   email:
@@ -1016,6 +1159,79 @@ definitions:
             medium:
               type: string
               description: url of medium-size image
+  ProductsHistogram:
+    x-internal: true
+    type: object
+    properties:
+      data:
+        type: array
+        description: histogram of scores and their number of products
+        items:
+          type: array
+          description: score-number pair
+          items:
+            type: ['string', 'number']
+  ScoringReportScore:
+    x-internal: true
+    type: object
+    properties:
+      id:
+        type: string
+      label:
+        type: string
+        description: human-readable name for this scoring theme
+      type:
+        type: string
+        enum: ['Score', 'Impact']
+        description: a score is a rating from 1-10 (10 is best), while an impact is a risk (0 is best)
+      value:
+        type: number
+        format: float
+        description: the score or impact of this scoring theme (depending on type)
+      weight:
+        type: number
+        format: float
+        description: the weight this score has among its peers
+      impact:
+        type: number
+        format: float
+        description: relative impact for the product, the sum of all impacts is the total impact
+      description:
+        type: object
+        properties:
+          title:
+            type: string
+            description: short human-readable name
+          body:
+            type: string
+            description: longer explanation of this scoring theme
+          references:
+            type: array
+            description: external references about background, methodology and sources
+            items:
+              type: object
+              properties:
+                title:
+                  type: string
+                url:
+                  type: string
+      scoring_data_name:
+        type: string
+        description: optional data field name for sorting ingredients
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/ScoringReportScore'
+  ScoringReport:
+    x-internal: true
+    type: object
+    properties:
+      generated_on:
+        type: string
+        description: date score was generated
+      score:
+        $ref: '#/definitions/ScoringReportScore'
+
   User:
     x-internal: true
     type: object
