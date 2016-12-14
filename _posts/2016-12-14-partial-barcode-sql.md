@@ -13,7 +13,7 @@ and see how sustainable it is compared to other products. This barcode is genera
 ([EAN/UPC](http://www.gs1.org/barcodes/ean-upc)), which identifies the product. These numbers are handed out by
 the international [GS1](http://www.gs1.org/) organisation.
 
-# Barcode: a unique identifier?
+## Barcode: a unique identifier?
 
 This number is like a unique identifier for a (consumer) product. Pretty uniquely. But not completely.
 There are [rules](http://www.gs1.org/1/gtinrules) for this
