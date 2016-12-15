@@ -63,7 +63,7 @@ with check digits (`c`), have the following format:
 * `23` `iiiii` `c` `eeee` `c`: price in euro cents (nationally unique)
 * `28` `iiii` `c` `wwwww` `c`: weight in grams
 
-For example, the EAN-code `2164941000227` would have product code `6494` and cost 2.27 euro's.
+For example, the EAN-code `2164941000227` would have product code `6494` and cost 0.22 euro's.
 
 ### Setup a sample database
 
