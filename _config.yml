@@ -30,6 +30,7 @@ markdown: kramdown
 kramdown:
   input: GFM
   hard_wrap: false
+  parse_block_html: true
   syntax_highlighter: rouge
   syntax_highlighter_opts:
     span:
