@@ -273,7 +273,7 @@ An open question remains how to show misclassifications outside the parent categ
 
 - Rule-based classifiers, like whitelist and blacklist (in [Sun, Rampalli et al. (2014)], section 4.5).
 - Ask data entry people which specific words in the description may be important, and try adding those.
-- Try separate classifiers for parent categories and their children.
+- Try separate classifiers for parent categories and their children (e.g. [Liu, Yang et al. (2005)][] and [Cai and Hofmann (2004)][]).
 - Look into combining different mechanisms using boosting.
 - Try decision tree algorithm(s) on real data.
 - Experiment with more features, like (normalized) _unit_, _allergens_, and others.
@@ -298,7 +298,6 @@ errors), feel free to contact [me](mailto:willem@thequestionmark.org) or
 
 * [Sebastiani (2001)][]: _Machine Learning in Automated Text Categorization_.
   Good and extensive overview of the field.
-
 
 * [Masood (2016)][]: _The Elusive Search of Approachable Taxonomy for Machine Learning Algorithms_.
   For finding the right algorithm, with the help of [scikit-learn's](http://scikit-learn.org/stable/tutorial/machine_learning_map/),
@@ -336,6 +335,8 @@ errors), feel free to contact [me](mailto:willem@thequestionmark.org) or
 * [Ristoski, Petrovski et al. (2016)][]: _A Machine Learning Approach for Product Matching and Categorization_.
   Attribute extraction and unsupervised category matching, targeted to webshops.
 
+* [Liu, Yang et al. (2005)][]: _Support vector machines classification with a very large-scale taxonomy_.
+
 * [Cai and Hofmann (2004)][]: _Hierarchical Document Categorization with Support Vector Machines_.
 
 * [Chen and Warren (2013)][]: _Cost-sensitive Learning for Large-scale Hierarchical Classification of Commercial Products_.
@@ -343,5 +344,6 @@ errors), feel free to contact [me](mailto:willem@thequestionmark.org) or
 
 [Ristoski, Petrovski et al. (2016)]: http://www.semantic-web-journal.net/content/machine-learning-approach-product-matching-and-categorization
 [Cai and Hofmann (2004)]: http://www.cis.uab.edu/zhang/Spam-mining-papers/Hierarchical.Data.Classification.with.Support.Vector.Machines.pdf
+[Liu, Yang et al. (2005)]: https://www.semanticscholar.org/paper/Support-vector-machines-classification-with-a-very-Liu-Yang/77cd7a11f254dd108b91b0e9442e856f26597d2c
 [Chen and Warren (2013)]: http://www3.cs.stonybrook.edu/~jianchen/papers/cikm2013.pdf  
 
