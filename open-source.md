@@ -18,6 +18,7 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2017-02-06 | [wvengen](https://github.com/wvengen)               | Release tokens gem                      | [tokkens-ruby](https://github.com/q-m/tokkens-ruby)
 | 2017-01-11 | [wvengen](https://github.com/wvengen)               | Fix exception                           | [linefit#4](https://github.com/escline/linefit/pull/4)
 | 2016-10-14 | [wvengen](https://github.com/wvengen)               | Fix react-bootstrap tooltips in IE      | [dom-helpers#12](https://github.com/react-bootstrap/dom-helpers/pull/12)
 | 2016-09-27 | [madhums](https://github.com/madhums)               | Allow setting people property once      | [rn-redux-mixpanel#14](https://github.com/danscan/rn-redux-mixpanel/pull/14)
