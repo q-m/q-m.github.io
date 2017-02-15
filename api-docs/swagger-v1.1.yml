@@ -461,20 +461,19 @@ paths:
         200:
           description: success
           schema:
-            type: object
-            properties:
-              products:
-                type: array
-                items:
-                  $ref: '#/definitions/Retailer'
-              total:
-                $ref: '#/definitions/total'
+            type: array
+            items:
+              $ref: '#/definitions/Retailer'
 
   /certificates:
     get:
       summary: list certificates
       tags:
         - Certificates
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
       responses:
         200:
           description: success
@@ -485,8 +484,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/Certificate'
-              total:
-                $ref: '#/definitions/total'
   /certificates/{id}:
     get:
       summary: get certificate by id
