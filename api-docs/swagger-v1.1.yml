@@ -886,6 +886,30 @@ parameters:
     - social_score ASC
     - animals_score
     - animals_score ASC
+    - nutrient_B12
+    - nutrient_B12 ASC
+    - nutrient_calcium
+    - nutrient_calcium ASC
+    - nutrient_energy
+    - nutrient_energy ASC
+    - nutrient_fat_saturated
+    - nutrient_fat_saturated ASC
+    - nutrient_fat_total
+    - nutrient_fat_total ASC
+    - nutrient_fat_trans
+    - nutrient_fat_trans ASC
+    - nutrient_fiber
+    - nutrient_fiber ASC
+    - nutrient_iron
+    - nutrient_iron ASC
+    - nutrient_natrium
+    - nutrient_natrium ASC
+    - nutrient_protein
+    - nutrient_protein ASC
+    - nutrient_salt
+    - nutrient_salt ASC
+    - nutrient_sugar
+    - nutrient_sugar ASC
     required: false
   sortProductIngredients:
     x-internal: true
