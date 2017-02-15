@@ -473,7 +473,7 @@ paths:
       parameters:
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/q_name'
       responses:
         200:
           description: success
@@ -752,6 +752,12 @@ parameters:
     type: string
     in: query
     description: search query (name, brand or barcode)
+    required: false
+  q_name:
+    name: q
+    type: string
+    in: query
+    description: search query (name)
     required: false
   usage_id:
     name: usage_id
