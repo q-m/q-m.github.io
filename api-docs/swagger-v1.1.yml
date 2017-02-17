@@ -484,6 +484,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/Certificate'
+              total:
+                $ref: '#/definitions/total'
   /certificates/{id}:
     get:
       summary: get certificate by id
