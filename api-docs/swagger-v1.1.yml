@@ -796,7 +796,7 @@ parameters:
     name: retailer_ids[]
     type: integer
     in: query
-    description: restrict by multiple usages (category), repeat parameter
+    description: restrict to retailer, repeat parameter
     required: false
   comparison_group_id:
     name: comparison_group_id
