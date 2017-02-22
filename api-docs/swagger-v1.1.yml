@@ -104,6 +104,7 @@ paths:
         - $ref: '#/parameters/detailProduct'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
         - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
@@ -179,6 +180,7 @@ paths:
         - $ref: '#/parameters/detailProduct'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
         - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
@@ -222,6 +224,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
         - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
@@ -260,6 +263,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
         - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
@@ -299,6 +303,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
         - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
@@ -338,6 +343,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
         - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
@@ -378,6 +384,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
         - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
@@ -422,6 +429,7 @@ paths:
         - $ref: '#/parameters/detailIngredient'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
         - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
@@ -589,6 +597,7 @@ paths:
         - $ref: '#/parameters/histogramGroupBy'
         - $ref: '#/parameters/q'
         - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
         - $ref: '#/parameters/category_id'
         - $ref: '#/parameters/brand_id'
         - $ref: '#/parameters/brand_ids'
@@ -766,6 +775,12 @@ parameters:
     type: integer
     in: query
     description: restrict by usage (category)
+    required: false
+  usage_ids:
+    name: usage_ids[]
+    type: integer
+    in: query
+    description: restrict to usage, repeat parameter
     required: false
   category_id:
     name: category_id
