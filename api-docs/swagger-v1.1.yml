@@ -112,6 +112,8 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -188,6 +190,8 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -232,6 +236,8 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -271,6 +277,8 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -311,6 +319,8 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -351,6 +361,8 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -392,6 +404,8 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -437,6 +451,8 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -605,6 +621,8 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
@@ -826,6 +844,18 @@ parameters:
     in: query
     description: restrict to health group
     x-internal: true
+    required: false
+  certificate_id:
+    name: certificate_id
+    type: integer
+    in: query
+    description: restrict to certificate
+    required: false
+  certificate_ids:
+    name: certificate_ids[]
+    type: integer
+    in: query
+    description: restrict to certificate, repeat parameter
     required: false
   scored:
     name: scored
