@@ -221,18 +221,43 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
-  /retailers:
+  /brands:
     get:
-      summary: list retailers
+      summary: list brands
       tags:
-        - Retailers
+        - Brands
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q_name'
       responses:
         200:
           description: success
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/Retailer'
+            type: object
+            properties:
+              brands:
+                type: array
+                items:
+                  $ref: '#/definitions/Brand'
+              total:
+                $ref: '#/definitions/total'
+  /brands/{id}:
+    get:
+      summary: get brand by id
+      tags:
+        - Brands
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Brand'
+        404:
+          description: brand not found
+          schema:
+            $ref: '#/definitions/Error'
 
   /certificates:
     get:
@@ -269,6 +294,35 @@ paths:
             $ref: '#/definitions/Certificate'
         404:
           description: certificate not found
+          schema:
+            $ref: '#/definitions/Error'
+
+  /retailers:
+    get:
+      summary: list retailers
+      tags:
+        - Retailers
+      responses:
+        200:
+          description: success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Retailer'
+  /retailers/{id}:
+    get:
+      summary: get retailer by id
+      tags:
+        - Retailers
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Retailer'
+        404:
+          description: retailer not found
           schema:
             $ref: '#/definitions/Error'
 
@@ -332,7 +386,6 @@ paths:
         - Ingredients
       parameters:
         - $ref: '#/parameters/idInUrl'
-        - $ref: '#/parameters/detailIngredient'
       responses:
         200:
           description: success
@@ -340,6 +393,80 @@ paths:
             $ref: '#/definitions/Ingredient'
         404:
           description: ingredient not found
+          schema:
+            $ref: '#/definitions/Error'
+
+  /stories/{id}:
+    get:
+      summary: get story
+      tags:
+        - Stories
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Story'
+        404:
+          description: story not found
+          schema:
+            $ref: '#/definitions/Error'
+  /stories/{id}/like:
+    post:
+      summary: like a story
+      x-internal: true
+      tags:
+        - Stories
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Success'
+        401:
+          description: no authenticated user
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: unlike a story
+      x-internal: true
+      tags:
+        - Stories
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Success'
+        401:
+          description: no authenticated user
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: story not liked by user
+          schema:
+            $ref: '#/definitions/Error'
+  /stories/{id}/flag:
+    post:
+      summary: flag a story for moderation
+      x-internal: true
+      tags:
+        - Stories
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/device_uuid'
+        - $ref: '#/parameters/flaggingFlag'
+        - $ref: '#/parameters/flaggingOriginatingUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Success'
+        404:
+          description: story not found
           schema:
             $ref: '#/definitions/Error'
 
@@ -643,6 +770,10 @@ paths:
                   $ref: '#/definitions/Ingredient'
               total:
                 $ref: '#/definitions/total'
+        401:
+          description: no authenticated owner
+          schema:
+            $ref: '#/definitions/Error'
 
   /products/{id}/stories:
     get:
@@ -734,6 +865,33 @@ paths:
           description: product not found
           schema:
             $ref: '#/definitions/Error'
+
+  /ingredients/{id}/alternatives:
+    get:
+      summary: list alternatives for an ingredient (requires owner)
+      x-internal: true
+      tags:
+        - Ingredients
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/sortIngredients'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              ingredients:
+                $ref: '#/definitions/IngredientBiz'
+              total:
+                $ref: '#/definitions/total'
+        401:
+          description: no authenticated owner
+          schema:
+            $ref: '#/definitions/Error'
+
 
   /user/sign_in:
     post:
@@ -1038,6 +1196,36 @@ parameters:
     - nutrient_sugar_benchmark DESC
     required: false
 
+  sortIngredients:
+    x-internal: true
+    name: sort
+    type: string
+    in: query
+    description: sorting order (requires owner)
+    enum:
+    - name
+    - impact_animals
+    - impact_animals_1_physical_impact
+    - impact_animals_2_housing
+    - impact_animals_3_feed
+    - impact_animals_4_transport
+    - impact_animals_5_slaughter
+    - impact_animals_6_dam
+    - impact_social
+    - impact_social_1_association
+    - impact_social_2_forced
+    - impact_social_3_child
+    - impact_social_4_discrimination
+    - impact_social_5_wage
+    - impact_social_6_health_safety
+    - impact_social_7_migrant
+    - impact_social_8_hours
+    - impact_social_9_water
+    - impact_social_10_land
+    - impact_social_11_ocean
+    - impact_env_2_biodiversity_1_fish_stocks
+    - impact_env_2_biodiversity_2_fishery_effects
+    - impact_env_2_biodiversity_3_fishery_management
   sortProductIngredients:
     x-internal: true
     name: sort
@@ -1047,9 +1235,32 @@ parameters:
     enum:
     - name
     - name DESC
+    - impact_animals
+    - impact_animals_1_physical_impact
+    - impact_animals_2_housing
+    - impact_animals_3_feed
+    - impact_animals_4_transport
+    - impact_animals_5_slaughter
+    - impact_animals_6_dam
+    - impact_social
+    - impact_social_1_association
+    - impact_social_2_forced
+    - impact_social_3_child
+    - impact_social_4_discrimination
+    - impact_social_5_wage
+    - impact_social_6_health_safety
+    - impact_social_7_migrant
+    - impact_social_8_hours
+    - impact_social_9_water
+    - impact_social_10_land
+    - impact_social_11_ocean
+    - impact_env_2_biodiversity_1_fish_stocks
+    - impact_env_2_biodiversity_2_fishery_effects
+    - impact_env_2_biodiversity_3_fishery_management
     - product_count
     - product_count ASC
     required: false
+
   ids:
     name: ids[]
     type: integer
@@ -1123,6 +1334,32 @@ parameters:
     in: query
     enum: ['questionmark-app', 'checkit']
     required: false
+  device_uuid:
+    name: device_uuid
+    type: string
+    in: query
+    required: false
+
+  flaggingFlag:
+    name: flagging[flag]
+    type: string
+    enum: ['spam', 'offensive', 'irrelevant', 'commercial', 'old', 'other']
+    x-internal: true
+    in: query
+    description: flagging reason
+    required: true
+  flaggingOriginatingUrl:
+    name: flagging[originating_url]
+    type: string
+    x-internal: true
+    in: query
+    description: url of page where the story was shown
+  flaggingDeviceUuid:
+    name: device_uuid
+    type: string
+    in: query
+    description: device identifier (required if not logged in)
+    required: false
 
 definitions:
   # models
@@ -1164,6 +1401,21 @@ definitions:
         type: integer
       name:
         type: string
+  IngredientBiz:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      base_name:
+        type: string
+      properties:
+        type: object
+      scoring_data:
+        type: object
+      private:
+        type: boolean
   ProductIngredient:
     type: object
     properties:
@@ -1484,6 +1736,12 @@ definitions:
     description: total number of items
     minimum: 0
 
+  Success:
+    type: object
+    properties:
+      success:
+        type: boolean
+        description: always true
   Error:
     type: object
     properties:
