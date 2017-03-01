@@ -218,263 +218,6 @@ paths:
           description: product not found
           schema:
             $ref: '#/definitions/Error'
-  /products/brands:
-    get:
-      summary: list brands for a product query
-      tags:
-        - Brands
-      parameters:
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/q'
-        - $ref: '#/parameters/usage_id'
-        - $ref: '#/parameters/usage_ids'
-        - $ref: '#/parameters/category_id'
-        - $ref: '#/parameters/brand_id'
-        - $ref: '#/parameters/brand_ids'
-        - $ref: '#/parameters/retailer_id'
-        - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
-        - $ref: '#/parameters/health_group_id'
-        - $ref: '#/parameters/certificate_id'
-        - $ref: '#/parameters/certificate_ids'
-        - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
-        - $ref: '#/parameters/personal_health_scored'
-        - $ref: '#/parameters/score'
-        - $ref: '#/parameters/personal_health_score'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              brands:
-                type: array
-                items:
-                  $ref: '#/definitions/Brand'
-              total:
-                $ref: '#/definitions/total'
-  /products/retailers:
-    get:
-      summary: list retailers for a product query
-      tags:
-        - Retailers
-      parameters:
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/q'
-        - $ref: '#/parameters/usage_id'
-        - $ref: '#/parameters/usage_ids'
-        - $ref: '#/parameters/category_id'
-        - $ref: '#/parameters/brand_id'
-        - $ref: '#/parameters/brand_ids'
-        - $ref: '#/parameters/retailer_id'
-        - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
-        - $ref: '#/parameters/health_group_id'
-        - $ref: '#/parameters/certificate_id'
-        - $ref: '#/parameters/certificate_ids'
-        - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
-        - $ref: '#/parameters/personal_health_scored'
-        - $ref: '#/parameters/score'
-        - $ref: '#/parameters/personal_health_score'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              retailers:
-                type: array
-                items:
-                  $ref: '#/definitions/Retailer'
-              total:
-                $ref: '#/definitions/total'
-
-  /products/usages:
-    get:
-      summary: list usages (categories) for a product query
-      tags:
-        - Usages
-      parameters:
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/q'
-        - $ref: '#/parameters/usage_id'
-        - $ref: '#/parameters/usage_ids'
-        - $ref: '#/parameters/category_id'
-        - $ref: '#/parameters/brand_id'
-        - $ref: '#/parameters/brand_ids'
-        - $ref: '#/parameters/retailer_id'
-        - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
-        - $ref: '#/parameters/health_group_id'
-        - $ref: '#/parameters/certificate_id'
-        - $ref: '#/parameters/certificate_ids'
-        - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
-        - $ref: '#/parameters/personal_health_scored'
-        - $ref: '#/parameters/score'
-        - $ref: '#/parameters/personal_health_score'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              usages:
-                type: array
-                items:
-                  $ref: '#/definitions/Usage'
-              total:
-                $ref: '#/definitions/total'
-  /products/comparison_groups:
-    get:
-      summary: list comparison groups for a product query
-      x-internal: true
-      tags:
-        - Scoring
-      parameters:
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/q'
-        - $ref: '#/parameters/usage_id'
-        - $ref: '#/parameters/usage_ids'
-        - $ref: '#/parameters/category_id'
-        - $ref: '#/parameters/brand_id'
-        - $ref: '#/parameters/brand_ids'
-        - $ref: '#/parameters/retailer_id'
-        - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
-        - $ref: '#/parameters/health_group_id'
-        - $ref: '#/parameters/certificate_id'
-        - $ref: '#/parameters/certificate_ids'
-        - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
-        - $ref: '#/parameters/personal_health_scored'
-        - $ref: '#/parameters/score'
-        - $ref: '#/parameters/personal_health_score'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/sortProductIngredients'
-        - $ref: '#/parameters/ids'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              stories:
-                type: array
-                items:
-                  $ref: '#/definitions/ComparisonGroup'
-              total:
-                $ref: '#/definitions/total'
-
-  /products/stories:
-    get:
-      summary: list stories for a product query
-      tags:
-        - Stories
-      parameters:
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/q'
-        - $ref: '#/parameters/usage_id'
-        - $ref: '#/parameters/usage_ids'
-        - $ref: '#/parameters/category_id'
-        - $ref: '#/parameters/brand_id'
-        - $ref: '#/parameters/brand_ids'
-        - $ref: '#/parameters/retailer_id'
-        - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
-        - $ref: '#/parameters/health_group_id'
-        - $ref: '#/parameters/certificate_id'
-        - $ref: '#/parameters/certificate_ids'
-        - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
-        - $ref: '#/parameters/personal_health_scored'
-        - $ref: '#/parameters/score'
-        - $ref: '#/parameters/personal_health_score'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              stories:
-                type: array
-                items:
-                  # @todo fix API to return: $ref: '#/parameters/Story'
-                  type: object
-                  properties:
-                    url:
-                      type: string
-              total:
-                $ref: '#/definitions/total'
-  /products/ingredients:
-    get:
-      summary: list ingredients for a product query
-      x-internal: true
-      tags:
-        - Ingredients
-      parameters:
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/detailIngredient'
-        - $ref: '#/parameters/q'
-        - $ref: '#/parameters/usage_id'
-        - $ref: '#/parameters/usage_ids'
-        - $ref: '#/parameters/category_id'
-        - $ref: '#/parameters/brand_id'
-        - $ref: '#/parameters/brand_ids'
-        - $ref: '#/parameters/retailer_id'
-        - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
-        - $ref: '#/parameters/health_group_id'
-        - $ref: '#/parameters/certificate_id'
-        - $ref: '#/parameters/certificate_ids'
-        - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
-        - $ref: '#/parameters/personal_health_scored'
-        - $ref: '#/parameters/score'
-        - $ref: '#/parameters/personal_health_score'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/sortProductIngredients'
-        - $ref: '#/parameters/ids'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              stories:
-                type: array
-                items:
-                  $ref: '#/definitions/Ingredient'
-              total:
-                $ref: '#/definitions/total'
 
   /retailers:
     get:
@@ -579,6 +322,326 @@ paths:
                 items:
                   $ref: '#/definitions/Category'
 
+  /ingredients/{id}:
+    get:
+      summary: get ingredient
+      x-internal: true
+      tags:
+        - Ingredients
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/detailIngredient'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Ingredient'
+        404:
+          description: ingredient not found
+          schema:
+            $ref: '#/definitions/Error'
+
+  /products/brands:
+    get:
+      summary: list brands for a product query
+      tags:
+        - Brands
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/brands_q_name'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              brands:
+                type: array
+                items:
+                  $ref: '#/definitions/Brand'
+              total:
+                $ref: '#/definitions/total'
+  /products/certificates:
+    get:
+      summary: list certificates for a product query
+      tags:
+        - Certificates
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/certificates_q_name'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              stories:
+                type: array
+                items:
+                  $ref: '#/definitions/Certificate'
+              total:
+                $ref: '#/definitions/total'
+  /products/retailers:
+    get:
+      summary: list retailers for a product query
+      tags:
+        - Retailers
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/retailers_q_name'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              retailers:
+                type: array
+                items:
+                  $ref: '#/definitions/Retailer'
+              total:
+                $ref: '#/definitions/total'
+  /products/usages:
+    get:
+      summary: list usages (categories) for a product query
+      tags:
+        - Usages
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/usages_q_name'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              usages:
+                type: array
+                items:
+                  $ref: '#/definitions/Usage'
+              total:
+                $ref: '#/definitions/total'
+  /products/comparison_groups:
+    get:
+      summary: list comparison groups for a product query
+      x-internal: true
+      tags:
+        - Scoring
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sortProductIngredients'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              stories:
+                type: array
+                items:
+                  $ref: '#/definitions/ComparisonGroup'
+              total:
+                $ref: '#/definitions/total'
+  /products/stories:
+    get:
+      summary: list stories for a product query
+      tags:
+        - Stories
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              stories:
+                type: array
+                items:
+                  # @todo fix API to return: $ref: '#/parameters/Story'
+                  type: object
+                  properties:
+                    url:
+                      type: string
+              total:
+                $ref: '#/definitions/total'
+  /products/ingredients:
+    get:
+      summary: list ingredients for a product query
+      x-internal: true
+      tags:
+        - Ingredients
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/detailIngredient'
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/usage_id'
+        - $ref: '#/parameters/usage_ids'
+        - $ref: '#/parameters/category_id'
+        - $ref: '#/parameters/brand_id'
+        - $ref: '#/parameters/brand_ids'
+        - $ref: '#/parameters/retailer_id'
+        - $ref: '#/parameters/retailer_ids'
+        - $ref: '#/parameters/comparison_group_id'
+        - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/certificate_id'
+        - $ref: '#/parameters/certificate_ids'
+        - $ref: '#/parameters/scored'
+        - $ref: '#/parameters/sustainability_scored'
+        - $ref: '#/parameters/personal_health_scored'
+        - $ref: '#/parameters/score'
+        - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/environment_score'
+        - $ref: '#/parameters/social_score'
+        - $ref: '#/parameters/animals_score'
+        - $ref: '#/parameters/sortProductIngredients'
+        - $ref: '#/parameters/ids'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              stories:
+                type: array
+                items:
+                  $ref: '#/definitions/Ingredient'
+              total:
+                $ref: '#/definitions/total'
+
   /products/{id}/stories:
     get:
       summary: list stories for a product
@@ -644,6 +707,7 @@ paths:
           description: no authenticated owner
           schema:
             $ref: '#/definitions/Error'
+
   /products/{id}/scoring_report:
     get:
       summary: get product scoring report (requires owner of product)
@@ -666,25 +730,6 @@ paths:
             $ref: '#/definitions/Error'
         404:
           description: product not found
-          schema:
-            $ref: '#/definitions/Error'
-
-  /ingredients/{id}:
-    get:
-      summary: get ingredient
-      x-internal: true
-      tags:
-        - Ingredients
-      parameters:
-        - $ref: '#/parameters/idInUrl'
-        - $ref: '#/parameters/detailIngredient'
-      responses:
-        200:
-          description: success
-          schema:
-            $ref: '#/definitions/Ingredient'
-        404:
-          description: ingredient not found
           schema:
             $ref: '#/definitions/Error'
 
@@ -991,6 +1036,30 @@ parameters:
     enum: ['default', 'biz']
     in: query
     description: detail level (biz requires owner)
+    required: false
+  brands_q_name:
+    name: brands[q]
+    type: string
+    in: query
+    description: restrict by brand search query (name)
+    required: false
+  certificates_q_name:
+    name: certificates[q]
+    type: string
+    in: query
+    description: restrict by certificate search query (name)
+    required: false
+  retailers_q_name:
+    name: retailers[q]
+    type: string
+    in: query
+    description: restrict by retailer search query (name)
+    required: false
+  usages_q_name:
+    name: usages[q]
+    type: string
+    in: query
+    description: restrict by usage search query (name)
     required: false
 
   histogramGroupBy:
