@@ -1111,6 +1111,7 @@ parameters:
     type: string
     in: query
     description: restrict by health score, repeat parameter
+    enum: ['A', 'B1', 'B2', 'C1', 'C2']
     required: false
   environment_score:
     name: environment_score
