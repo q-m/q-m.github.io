@@ -119,6 +119,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -198,6 +199,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -495,6 +497,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -537,6 +540,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -579,6 +583,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -621,6 +626,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -664,6 +670,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -706,6 +713,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -753,6 +761,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -824,6 +833,7 @@ paths:
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
+        - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
@@ -1095,6 +1105,12 @@ parameters:
     in: query
     description: restrict by health score
     enum: ['A', 'B1', 'B2', 'C1', 'C2']
+    required: false
+  personal_health_scores:
+    name: personal_health_scores[]
+    type: string
+    in: query
+    description: restrict by health score, repeat parameter
     required: false
   environment_score:
     name: environment_score
