@@ -1146,9 +1146,9 @@ parameters:
   coded:
     name: coded
     type: boolean
+    enum: [true]
     in: query
     description: restrict to nutrients having a code
-    enum: [true]
     required: false
   sortProducts:
     name: sort
