@@ -1148,6 +1148,7 @@ parameters:
     type: boolean
     in: query
     description: restrict to nutrients having a code
+    enum: [true]
     required: false
   sortProducts:
     name: sort
