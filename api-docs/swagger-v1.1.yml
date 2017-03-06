@@ -1108,11 +1108,14 @@ parameters:
     required: false
   personal_health_scores:
     name: personal_health_scores[]
-    type: string
+    type: array
+    items:
+      type: string
+      enum: ['A', 'B1', 'B2', 'C1', 'C2']
     in: query
     description: restrict by health score, repeat parameter
-    enum: ['A', 'B1', 'B2', 'C1', 'C2']
     required: false
+    collectionFormat: multi
   environment_score:
     name: environment_score
     type: integer
