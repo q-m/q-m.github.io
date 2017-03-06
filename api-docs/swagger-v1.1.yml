@@ -1092,9 +1092,9 @@ parameters:
   personal_health_score:
     name: personal_health_score
     type: string
+    enum: ['A', 'B1', 'B2', 'C1', 'C2']
     in: query
     description: restrict by health score
-    enum: ['A', 'B1', 'B2', 'C1', 'C2']
     required: false
   environment_score:
     name: environment_score
@@ -1123,8 +1123,6 @@ parameters:
   sortProducts:
     name: sort
     type: string
-    in: query
-    description: sorting order
     enum:
     - name
     - name DESC
@@ -1162,13 +1160,13 @@ parameters:
     - nutrient_salt DESC
     - nutrient_sugar
     - nutrient_sugar DESC
+    in: query
+    description: sorting order
     required: false
   sortProductsBiz:
     x-internal: true
     name: sort
     type: string
-    in: query
-    description: sorting order (extra values for biz detail)
     enum:
     - nutrient_B12_benchmark
     - nutrient_B12_benchmark DESC
@@ -1194,14 +1192,14 @@ parameters:
     - nutrient_salt_benchmark DESC
     - nutrient_sugar_benchmark
     - nutrient_sugar_benchmark DESC
+    in: query
+    description: sorting order (extra values for biz detail)
     required: false
 
   sortIngredients:
     x-internal: true
     name: sort
     type: string
-    in: query
-    description: sorting order (requires owner)
     enum:
     - name
     - impact_animals
@@ -1259,14 +1257,19 @@ parameters:
     - impact_env_2_biodiversity_3_fishery_management
     - product_count
     - product_count ASC
+    in: query
+    description: sorting order (requires owner)
     required: false
 
   ids:
     name: ids[]
-    type: integer
+    type: array
+    items:
+      type: integer
     in: query
-    description: fetch multiple products by id, repeat parameter
+    description: fetch multiple products by id
     required: false
+    collectionFormat: multi
   detailProduct:
     name: detail
     x-internal: true
@@ -1331,8 +1334,8 @@ parameters:
   app:
     name: user[app]
     type: string
-    in: query
     enum: ['questionmark-app', 'checkit']
+    in: query
     required: false
   device_uuid:
     name: device_uuid
@@ -1544,8 +1547,8 @@ definitions:
         description: sustainability score (1-10)
       personal_health_score:
         type: ['string', 'null']
-        description: health score
         enum: ['A', 'B1', 'B2', 'C1', 'C2']
+        description: health score
       theme_scores:
         type: array
         items:
