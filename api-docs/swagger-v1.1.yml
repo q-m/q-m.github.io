@@ -1138,30 +1138,57 @@ parameters:
     - social_score ASC
     - animals_score
     - animals_score ASC
-    - nutrient_B12
-    - nutrient_B12 DESC
-    - nutrient_calcium
-    - nutrient_calcium DESC
-    - nutrient_energy
-    - nutrient_energy DESC
-    - nutrient_fat_saturated
-    - nutrient_fat_saturated DESC
-    - nutrient_fat_total
-    - nutrient_fat_total DESC
-    - nutrient_fat_trans
-    - nutrient_fat_trans DESC
-    - nutrient_fiber
-    - nutrient_fiber DESC
-    - nutrient_iron
-    - nutrient_iron DESC
-    - nutrient_natrium
-    - nutrient_natrium DESC
-    - nutrient_protein
-    - nutrient_protein DESC
-    - nutrient_salt
-    - nutrient_salt DESC
-    - nutrient_sugar
-    - nutrient_sugar DESC
+    # The nutrient sort options are available as private options, this is a
+    # specific feature for QMi Dashboard.
+    #
+    # - nutrient_B12
+    # - nutrient_B12 DESC
+    # - nutrient_calcium
+    # - nutrient_calcium DESC
+    # - nutrient_energy
+    # - nutrient_energy DESC
+    # - nutrient_fat_saturated
+    # - nutrient_fat_saturated DESC
+    # - nutrient_fat_total
+    # - nutrient_fat_total DESC
+    # - nutrient_fat_trans
+    # - nutrient_fat_trans DESC
+    # - nutrient_fiber
+    # - nutrient_fiber DESC
+    # - nutrient_iron
+    # - nutrient_iron DESC
+    # - nutrient_natrium
+    # - nutrient_natrium DESC
+    # - nutrient_protein
+    # - nutrient_protein DESC
+    # - nutrient_salt
+    # - nutrient_salt DESC
+    # - nutrient_sugar
+    # - nutrient_sugar DESC
+    # - nutrient_B12_benchmark
+    # - nutrient_B12_benchmark DESC
+    # - nutrient_calcium_benchmark
+    # - nutrient_calcium_benchmark DESC
+    # - nutrient_energy_benchmark
+    # - nutrient_energy_benchmark DESC
+    # - nutrient_fat_saturated_benchmark
+    # - nutrient_fat_saturated_benchmark DESC
+    # - nutrient_fat_total_benchmark
+    # - nutrient_fat_total_benchmark DESC
+    # - nutrient_fat_trans_benchmark
+    # - nutrient_fat_trans_benchmark DESC
+    # - nutrient_fiber_benchmark
+    # - nutrient_fiber_benchmark DESC
+    # - nutrient_iron_benchmark
+    # - nutrient_iron_benchmark DESC
+    # - nutrient_natrium_benchmark
+    # - nutrient_natrium_benchmark DESC
+    # - nutrient_protein_benchmark
+    # - nutrient_protein_benchmark DESC
+    # - nutrient_salt_benchmark
+    # - nutrient_salt_benchmark DESC
+    # - nutrient_sugar_benchmark
+    # - nutrient_sugar_benchmark DESC
     required: false
   sortProductsBiz:
     x-internal: true
