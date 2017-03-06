@@ -1001,10 +1001,13 @@ parameters:
     required: false
   usage_ids:
     name: usage_ids[]
-    type: integer
+    type: array
+    items:
+      type: string
     in: query
-    description: restrict to usage, repeat parameter
+    description: restrict to usages
     required: false
+    collectionFormat: multi
   category_id:
     name: category_id
     type: integer
@@ -1020,10 +1023,13 @@ parameters:
     required: false
   brand_ids:
     name: brand_ids[]
-    type: integer
+    type: array
+    items:
+      type: integer
     in: query
-    description: restrict to brand, repeat parameter
+    description: restrict to brands
     required: false
+    collectionFormat: multi
   retailer_id:
     name: retailer_id
     type: integer
@@ -1032,10 +1038,13 @@ parameters:
     required: false
   retailer_ids:
     name: retailer_ids[]
-    type: integer
+    type: array
+    items:
+      type: integer
     in: query
-    description: restrict to retailer, repeat parameter
+    description: restrict to retailers
     required: false
+    collectionFormat: multi
   comparison_group_id:
     name: comparison_group_id
     type: integer
@@ -1058,10 +1067,13 @@ parameters:
     required: false
   certificate_ids:
     name: certificate_ids[]
-    type: integer
+    type: array
+    items:
+      type: integer
     in: query
-    description: restrict to certificate, repeat parameter
+    description: restrict to certificates
     required: false
+    collectionFormat: multi
   scored:
     name: scored
     type: boolean
@@ -1224,12 +1236,12 @@ parameters:
     - impact_env_2_biodiversity_1_fish_stocks
     - impact_env_2_biodiversity_2_fishery_effects
     - impact_env_2_biodiversity_3_fishery_management
+    in: query
+    description: sorting order (requires owner)
   sortProductIngredients:
     x-internal: true
     name: sort
     type: string
-    in: query
-    description: sorting order (requires owner)
     enum:
     - name
     - name DESC
