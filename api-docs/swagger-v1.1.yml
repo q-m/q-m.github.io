@@ -1113,7 +1113,7 @@ parameters:
       type: string
       enum: ['A', 'B1', 'B2', 'C1', 'C2']
     in: query
-    description: restrict by health score, repeat parameter
+    description: restrict by health score
     required: false
     collectionFormat: multi
   environment_score:
