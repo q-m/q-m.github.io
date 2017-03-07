@@ -602,6 +602,7 @@ paths:
       tags:
         - Usages
       parameters:
+        - $ref: '#/parameters/usages_flat'
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
@@ -1321,6 +1322,13 @@ parameters:
     type: string
     in: query
     description: restrict by usage search query (name)
+    required: false
+  usages_flat:
+    name: flat
+    type: boolean
+    in: query
+    description: format the returned set of usages - which by default is arranged in a tree structure - as a flat list; pagination options only apply if this option is true
+    default: false
     required: false
 
   histogramGroupBy:
