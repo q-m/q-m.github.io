@@ -1590,7 +1590,7 @@ definitions:
           - $ref: '#/definitions/ProductIngredient'
       usages:
         type: array
-        description: hierarchical list of product usages (categories)
+        description: (hierarchical) list of product usages (categories)
         items:
           - $ref: '#/definitions/SimpleUsage'
       certificates:
