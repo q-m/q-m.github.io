@@ -72,6 +72,8 @@ info:
     **Usages** are the main [taxonomy](https://en.wikipedia.org/wiki/Taxonomy_%28general%29) we
     use to categorize products. Other categorizations, like the browsing categories on our
     website, comparison groups and health groups, are derived from the usage.
+    When a product belongs to a specific usage then the product implicitly belongs to all of that usage's
+    ancestors (in the hierarchy) as well.
 
     **Certificates** are certifications, like
     [EU Organic](http://ec.europa.eu/agriculture/organic/organic-farming/what-is-organic-farming/organic-certification_en),
@@ -598,7 +600,7 @@ paths:
                 $ref: '#/definitions/total'
   /products/usages:
     get:
-      summary: list usages (categories) for a product query
+      summary: list usages (categories) for a product query, implicit usages included
       tags:
         - Usages
       parameters:
