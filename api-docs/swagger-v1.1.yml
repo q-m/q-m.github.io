@@ -1330,6 +1330,9 @@ parameters:
     description: format the returned set of usages - which by default is arranged in a tree structure - as a flat list; pagination options only apply if this option is true
     default: false
     required: false
+    x-internal: true
+    # @todo Also document different responses for flat=0|1. (Hard because flat=1 is currently internal only,
+    # and our client doesn't support filtering out internal responses at the moment.)
 
   histogramGroupBy:
     name: group_by
