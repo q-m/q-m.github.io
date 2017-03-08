@@ -1,0 +1,35 @@
+---
+layout: page
+title: Open challenges
+title_nav: Challenges
+tagline: something for you?
+group: navigation
+---
+{% include JB/setup %}
+
+<p>With a small <a href="http://www.thequestionmark.org/over/team#development">development team</a> we tackle
+challenges from data mining and score computation to visualization and user experience. But there are more
+things we'd love to do, than we can do. Some of those are listed here.</p>
+
+
+<p>If you're a student looking for a meaningful internship on one of these topics, feel free to
+<a href="http://www.thequestionmark.org/contact">contact us</a>. Or perhaps you recognize some of these
+challenges and would like to explore collaboration, likewise. Perhaps we can join forces.</p>
+
+<hr>
+
+{% for project in site.project %}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <a href="{{ BASE_PATH }}{{ project.url }}">{{ project.title }}</a>
+        {% if project.tagline %}<small>{{ project.tagline }}</small>{% endif %}
+      </h3>
+    </div>
+    <div class="panel-body">
+      {% if project.image %}<img src="{{ project.image }}" class="post-preview-image" alt="" />{% endif %}
+      {% if project.teaser %}{{ project.teaser }}{% else %}{{ project.content | strip_html | truncatewords: 80 }}{% endif %}
+      <a href="{{ BASE_PATH }}{{ project.url }}">read more&nbsp;»</a>
+    </div>
+  </div>
+{% endfor %}

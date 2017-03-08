@@ -130,3 +130,7 @@ highlighter: rouge
 gist:
   noscript: false
 
+collections:
+  project:
+    output: true
+
