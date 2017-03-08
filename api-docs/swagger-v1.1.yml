@@ -1012,7 +1012,7 @@ parameters:
     name: category_id
     type: integer
     in: query
-    description: restrict by front-end category
+    description: restrict by usage (category); deprecated in favor of `usage_id`
     x-internal: true
     required: false
   brand_id:
