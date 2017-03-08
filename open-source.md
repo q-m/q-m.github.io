@@ -18,6 +18,7 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2017-03-08 | [wvengen](https://github.com/wvengen)               | Hyperlinks for urls and emails          | [metabase#4503](https://github.com/metabase/metabase/pull/4503)
 | 2017-03-08 | [wvengen](https://github.com/wvengen)               | Fix Docker build                        | [metabase#4499](https://github.com/metabase/metabase/pull/4499)
 | 2017-02-14 | [wvengen](https://github.com/wvengen)               | Release classification evaluation app   | [mlc-eval](https://github.com/q-m/mlc-eval)
 | 2017-02-06 | [wvengen](https://github.com/wvengen)               | Release tokens gem                      | [tokkens-ruby](https://github.com/q-m/tokkens-ruby)
