@@ -472,6 +472,29 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
+  /nutrients:
+    get:
+      summary: list nutrients
+      tags:
+        - Nutrients
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q_name'
+        - $ref: '#/parameters/coded'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              nutrients:
+                type: array
+                items:
+                  $ref: '#/definitions/Nutrient'
+              total:
+                $ref: '#/definitions/total'
+
   /products/brands:
     get:
       summary: list brands for a product query
@@ -1153,6 +1176,13 @@ parameters:
     minimum: 1
     maximum: 10
     required: false
+  coded:
+    name: coded
+    type: boolean
+    enum: [true]
+    in: query
+    description: restrict to nutrients having a code
+    required: false
   sortProducts:
     name: sort
     type: string
@@ -1574,6 +1604,13 @@ definitions:
             type: number
           height:
             type: number
+  Nutrient:
+    type: object
+    properties:
+      name:
+        type: string
+      code:
+        type: string
   Product:
     type: object
     properties:
