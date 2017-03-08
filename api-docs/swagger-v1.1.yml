@@ -602,6 +602,7 @@ paths:
       tags:
         - Usages
       parameters:
+        - $ref: '#/parameters/usages_flat'
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q'
@@ -1322,6 +1323,16 @@ parameters:
     in: query
     description: restrict by usage search query (name)
     required: false
+  usages_flat:
+    name: flat
+    type: boolean
+    in: query
+    description: format the returned set of usages - which by default is arranged in a tree structure - as a flat list; pagination options only apply if this option is true
+    default: false
+    required: false
+    x-internal: true
+    # @todo Also document different responses for flat=0|1. (Hard because flat=1 is currently internal only,
+    # and our client doesn't support filtering out internal responses at the moment.)
 
   histogramGroupBy:
     name: group_by
@@ -1582,7 +1593,7 @@ definitions:
           - $ref: '#/definitions/ProductIngredient'
       usages:
         type: array
-        description: hierarchical list of product usages (categories)
+        description: (hierarchical) list of product usages (categories)
         items:
           - $ref: '#/definitions/SimpleUsage'
       certificates:
