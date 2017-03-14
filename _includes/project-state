@@ -1,0 +1,16 @@
+{% if page.status == 'open' %}
+  <div class="label label-success">open</div>
+{% elsif page.status == 'taken' %}
+  <div class="label label-info">in progress</div>
+{% elsif page.status == 'done' %}
+  <div class="label label-default">finished</div>
+{% endif %}
+          
+{% if page.priority < 10 %}
+  <div class="label label-primary">high priority</div>
+{% elsif page.priority < 20 %}
+  <div class="label label-default">medium priority</div>
+{% elsif page.priority > 20 %}
+  <div class="label label-default text-muted">low priority</div>
+{% endif %}
+

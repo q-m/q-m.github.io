@@ -3,13 +3,12 @@ layout: page
 title: Open challenges
 title_nav: Challenges
 tagline: something for you?
-group: navigation
 ---
 {% include JB/setup %}
 
 <p>With a small <a href="http://www.thequestionmark.org/over/team#development">development team</a> we tackle
 challenges from data mining and score computation to visualization and user experience. But there are more
-things we'd love to do, than we can do. Some of those are listed here.</p>
+things we'd like to do, than we can do. Some of those are listed here.</p>
 
 
 <p>If you're a student looking for a meaningful internship on one of these topics, feel free to
@@ -18,18 +17,31 @@ challenges and would like to explore collaboration, likewise. Perhaps we can joi
 
 <hr>
 
-{% for project in site.project %}
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        <a href="{{ BASE_PATH }}{{ project.url }}">{{ project.title }}</a>
-        {% if project.tagline %}<small>{{ project.tagline }}</small>{% endif %}
-      </h3>
+{% comment %}
+  Projects have some extra attributes indicating their status:
+  - priority: a number, 0-9 means high, 10-19 medium, 20-29 low
+              projects are sorted according to this priority as well
+  - status: either 'open', 'taken' or 'done'
+{% endcomment %}
+
+{% assign sorted_projects = site.project | sort:"priority" %}
+{% for page in sorted_projects %}
+  {% if page.status != 'done' %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="pull-right">
+          {% include project-state %}
+        </div>
+        <h3 class="panel-title">
+          <a href="{{ BASE_PATH }}{{ page.url }}">{{ page.title }}</a>
+          {% if page.tagline %}<small>{{ page.tagline }}</small>{% endif %}
+        </h3>
+      </div>
+      <div class="panel-body">
+        {% if page.image %}<img src="{{ page.image }}" class="post-preview-image" alt="" />{% endif %}
+        {% if page.teaser %}{{ page.teaser }}{% else %}{{ page.content | strip_html | truncatewords: 80 }}{% endif %}
+        <a href="{{ BASE_PATH }}{{ page.url }}">read more&nbsp;»</a>
+      </div>
     </div>
-    <div class="panel-body">
-      {% if project.image %}<img src="{{ project.image }}" class="post-preview-image" alt="" />{% endif %}
-      {% if project.teaser %}{{ project.teaser }}{% else %}{{ project.content | strip_html | truncatewords: 80 }}{% endif %}
-      <a href="{{ BASE_PATH }}{{ project.url }}">read more&nbsp;»</a>
-    </div>
-  </div>
+  {% endif %}
 {% endfor %}
