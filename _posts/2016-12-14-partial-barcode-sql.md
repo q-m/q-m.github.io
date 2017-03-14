@@ -152,7 +152,6 @@ SELECT barcodes.barcode, barcodes.name FROM barcodes
 
 This is even applicable when `JOIN`ing another table with barcodes instead of the list used here.
 
-_**edit** While this approach works, it is not very performant (as you may have guessed). A cleaner
-solution may be to normalize barcodes on ingress. This is what we currenty do. Perhaps that will be
-discussed in a future blog post._
+_**update** While this approach works, it is not very performant (as you may have guessed). A cleaner
+solution may be to normalize barcodes on ingress. This is discussed in [another post](/2017/02/13/storing-barcodes)._
 
