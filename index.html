@@ -5,6 +5,12 @@ tagline: some things we do
 ---
 {% include JB/setup %}
 
+<div class="well well-lg" style="font-style: italic">
+  Hello, this is the developer blog of <a href="//www.thequestionmark.org">Questionmark</a>, where
+  we discuss technical challenges and solutions.<br>
+  If instead you're interested in using our API, please see the <a href="/api-docs">API documentation</a>.
+</div>
+
 {% for post in site.posts %}
   <div class="panel panel-default">
     <div class="panel-heading">
