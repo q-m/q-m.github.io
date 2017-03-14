@@ -38,7 +38,8 @@ kind of diagram usually shows how processes turn inputs into outputs (e.g. in
 it to show how a total risk on something undesirable in the world consists of
 various themes and sub-themes.
 
-<div class="text-right text-muted">see full <a href="http://bl.ocks.org/wvengen/cab9b01816490edb7083">bl.ock</a> or <a href="https://gist.github.com/wvengen/cab9b01816490edb7083">gist</a></div>
+{: .text-right .text-muted}
+see full [bl.ock](http://bl.ocks.org/wvengen/cab9b01816490edb7083) or [gist](https://gist.github.com/wvengen/cab9b01816490edb7083)
 <iframe src="http://cdn.rawgit.com/wvengen/cab9b01816490edb7083/raw/663afbd79d2cccbe2c75ee9ea2d05d1b6f08e616/index.html" width="100%" height="520" frameBorder="0"></iframe>
 
 This chart shows on the left the total impact or risk. This is divided into
@@ -55,7 +56,7 @@ for producers, [QM Closeup](http://www.qmintelligence.com/closeup/), we use
 this to explain the sustainability of products (and provide more information on
 and references for each theme and sub-theme)
 
-## <tt>d3.chart.sankey</tt>
+## `d3.chart.sankey`
 
 This Sankey diagram is not really specific to our use-case. And, thankfully,
 there already was [an implementation](http://bost.ocks.org/mike/sankey/) based
