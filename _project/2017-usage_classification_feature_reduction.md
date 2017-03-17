@@ -9,7 +9,7 @@ contact: wvengen
 
 After our [first step](/2017/01/31/product-categorization-with-machine-learning) in machine learning,
 where products are automatically assigned a category, there are many directions for improvement. This
-page describes a number of first steps that could be taken.
+page describes a number of next steps that could be taken.
 
 
 ## A proper measure of success
