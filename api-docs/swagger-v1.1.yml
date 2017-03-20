@@ -1047,28 +1047,56 @@ paths:
       x-internal: true
       tags:
         - Users
+      responses:
+        200:
+          description: success
     delete:
       summary: delete invitation (requires owner)
       x-internal: true
       tags:
         - Users
+      responses:
+        200:
+          description: success
   /user/invitation/accept:
     get:
       summary: show invitation
       x-internal: true
       tags:
         - Users
+      parameters:
+        - $ref: '#/parameters/invitation_token'
       responses:
         200:
           description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              user:
+                $ref: '#/definitions/User'
     put:
       summary: accept invitation
       x-internal: true
       tags:
         - Users
+      parameters:
+        - $ref: '#/parameters/invitation_token'
+        # @todo finish
       responses:
         200:
           description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              errors:
+                type: object
+                description: error message per user attribute (only present when `success` is `false`)
+              user:
+                $ref: '#/definitions/User'
 
 
 parameters:
@@ -1551,6 +1579,11 @@ parameters:
     type: string
     in: query
     required: false
+  invitation_token:
+    name: invitation_token
+    type: string
+    in: query
+    required: true
 
   flaggingFlag:
     name: flagging[flag]
