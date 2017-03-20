@@ -936,9 +936,9 @@ paths:
       tags:
         - Users
       parameters:
-        - $ref: '#/parameters/email'
-        - $ref: '#/parameters/password'
-        - $ref: '#/parameters/app'
+        - $ref: '#/parameters/user_email'
+        - $ref: '#/parameters/user_password'
+        - $ref: '#/parameters/user_app'
       responses:
         200:
           description: login failed (`success` is `false`) or succeeded
@@ -948,8 +948,8 @@ paths:
               success:
                 type: boolean
               error:
-                type: string
                 description: login failure reason (only present when `success` is `false`)
+                type: string
               user:
                 $ref: '#/definitions/User'
   /user/status:
@@ -977,7 +977,98 @@ paths:
       responses:
         204:
           description: success
-
+  /user:
+    post:
+      summary: signup by email
+      x-internal: true
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/parameters/user_email'
+        - $ref: '#/parameters/user_password'
+        - $ref: '#/parameters/user_app'
+      responses:
+        200:
+          description: signup failed (`success` is `false`) or succeeded
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              errors:
+                description: login failure reason (only present when `success` is `false`)
+                type: array
+                items:
+                  type: string
+              user:
+                $ref: '#/definitions/User'
+    put:
+      summary: update user info
+      x-internal: true
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/parameters/user_preferences_environment'
+        - $ref: '#/parameters/user_preferences_social'
+        - $ref: '#/parameters/user_preferences_animals'
+        - $ref: '#/parameters/user_retailer_ids'
+        - $ref: '#/parameters/user_device_uuid'
+        # there are more owner-related parameters
+      responses:
+        200:
+          description: update suceeded
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              user:
+                $ref: '#/definitions/User'
+  /user/password/reset:
+    get:
+      summary: request password reset
+      x-internal: true
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/parameters/email'
+        - $ref: '#/parameters/app'
+      responses:
+        200:
+          description: reset failed (`success` is `false`) or succeeded
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+  /user/invitation:
+    post:
+      summary: create invitation (requires owner)
+      x-internal: true
+      tags:
+        - Users
+    delete:
+      summary: delete invitation (requires owner)
+      x-internal: true
+      tags:
+        - Users
+  /user/invitation/accept:
+    get:
+      summary: show invitation
+      x-internal: true
+      tags:
+        - Users
+      responses:
+        200:
+          description: success
+    put:
+      summary: accept invitation
+      x-internal: true
+      tags:
+        - Users
+      responses:
+        200:
+          description: success
 
 
 parameters:
@@ -1395,19 +1486,62 @@ parameters:
     description: x-axis of the histogram
     required: false
 
-  email:
+  user_email:
     name: user[email]
     type: string
     in: query
     required: true
-  password:
+  user_password:
     name: user[password]
     type: string
     format: password
     in: query
     required: true
-  app:
+  user_app:
     name: user[app]
+    type: string
+    enum: ['questionmark-app', 'checkit']
+    in: query
+    required: false
+  user_preferences_environment:
+    name: user[preferences][environment]
+    type: string
+    enum: ['less_important', 'equally_important', 'more_important']
+    in: query
+    description: importance of environment score
+    required: false
+  user_preferences_social:
+    name: user[preferences][social]
+    type: string
+    enum: ['less_important', 'equally_important', 'more_important']
+    in: query
+    description: importance of human rights score
+    required: false
+  user_preferences_animals:
+    name: user[preferences][animals]
+    type: string
+    enum: ['less_important', 'equally_important', 'more_important']
+    description: importance of animal score
+    in: query
+    required: false
+  user_retailer_ids:
+    name: user[retailer_ids][]
+    type: integer
+    in: query
+    description: preferred retailer
+    required: false
+  user_device_uuid:
+    name: user[device_uuid]
+    type: string
+    in: query
+    required: false
+  email:
+    name: email
+    type: string
+    in: query
+    required: true
+  app:
+    name: app
     type: string
     enum: ['questionmark-app', 'checkit']
     in: query
