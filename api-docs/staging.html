@@ -81,6 +81,12 @@
           new RegExp('(### Terms and license)[^]*?(###)'),
           '$1\nYou are viewing the internal version of the API documentation.\n$2'
         );
+        client.info.description = client.info.description.replace(/api-c\.thequestionmark\.org\//g, 'api-c-staging.thequestionmark.org/');
+        var facebook = client.authSchemes.facebook
+        if (facebook) {
+          facebook.authorizationUrl = facebook.authorizationUrl.replace('api-c.thequestionmark.org', 'api-c-staging.thequestionmark.org');
+          facebook.tokenUrl = facebook.tokenUrl.replace('api-c.thequestionmark.org', 'api-c-staging.thequestionmark.org');
+        }
         return oldSuccess();
       });
 

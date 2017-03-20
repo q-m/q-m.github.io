@@ -81,6 +81,12 @@
           new RegExp('(### Terms and license)[^]*?(###)'),
           '$1\nYou are viewing the internal version of the API documentation.\n$2'
         );
+        client.info.description = client.info.description.replace(/https?:\/\/api-c\.thequestionmark\.org\//g, 'http://localhost:3000/');
+        var facebook = client.authSchemes.facebook
+        if (facebook) {
+          facebook.authorizationUrl = facebook.authorizationUrl.replace(/https?:\/\/api-c\.thequestionmark\.org\//g, 'http://localhost:3000/');
+          facebook.tokenUrl = facebook.tokenUrl.replace(/https?:\/\/api-c\.thequestionmark\.org\//g, 'http://localhost:3000/');
+        }
         return oldSuccess();
       });
 
