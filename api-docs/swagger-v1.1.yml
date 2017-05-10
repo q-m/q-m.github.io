@@ -1289,20 +1289,20 @@ parameters:
     name: package_size_min
     type: integer
     in: query
-    description: minimum package size (&ge;) in grams or milliliters
+    description: Require a minimum package size (&ge;) in grams or milliliters
     required: false
   package_size_max:
     name: package_size_max
     type: integer
     in: query
-    description: maximum package size (&le;) in grams or milliliters
+    description: Require a maximum package size (&le;) in grams or milliliters
     required: false
   package_size_unit:
     name: package_size_unit
     type: string
     enum: ['g', 'ml']
     in: query
-    description: package size unit
+    description: Restrict by package size unit
     required: false
   detailProduct:
     name: detail
