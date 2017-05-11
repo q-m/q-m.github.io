@@ -128,6 +128,9 @@ paths:
         - $ref: '#/parameters/sortProducts'
         - $ref: '#/parameters/sortProductsBiz'
         - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/package_size_min'
+        - $ref: '#/parameters/package_size_max'
+        - $ref: '#/parameters/package_size_unit'
       responses:
         200:
           description: success
@@ -1454,6 +1457,25 @@ parameters:
     description: fetch multiple products by id
     required: false
     collectionFormat: multi
+  package_size_min:
+    name: package_size_min
+    type: integer
+    in: query
+    description: require a minimum package size (&ge;) in grams or milliliters
+    required: false
+  package_size_max:
+    name: package_size_max
+    type: integer
+    in: query
+    description: require a maximum package size (&le;) in grams or milliliters
+    required: false
+  package_size_unit:
+    name: package_size_unit
+    type: string
+    enum: ['g', 'ml']
+    in: query
+    description: restrict by package size unit
+    required: false
   detailProduct:
     name: detail
     x-internal: true
