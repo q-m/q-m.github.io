@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
-  title: Questionmark API v1.1
-  version: '1.1.0'
+  title: Questionmark API v1.2
+  version: '1.2.0'
   description: |-
     [Questionmark](http://www.thequestionmark.org/)
     stands for your right to know the story behind the products you buy: where they come from
@@ -37,8 +37,8 @@ info:
 
     ### Technical notes
 
-    * The base url for the API is `https://api-c.thequestionmark.org/api/v1.1`, so e.g. the product list
-      endpoint can be accessed at `https://api-c.thequestionmark.org/api/v1.1/products`.
+    * The base url for the API is `https://api-c.thequestionmark.org/api/v1.2`, so e.g. the product list
+      endpoint can be accessed at `https://api-c.thequestionmark.org/api/v1.2/products`.
 
     * Most endpoints return JSON by default, but to make sure you'll always receive JSON (also
       in case of errors), you have to either add an `Accept: application/json` header to each request,
@@ -89,7 +89,7 @@ info:
 host: api-c.thequestionmark.org
 schemes:
   - 'https'
-basePath: /api/v1.1
+basePath: /api/v1.2
 
 produces:
   - 'application/json'
@@ -309,13 +309,22 @@ paths:
       summary: list retailers
       tags:
         - Retailers
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+        - $ref: '#/parameters/q_name'
       responses:
         200:
           description: success
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/Retailer'
+            type: object
+            properties:
+              retailers:
+                type: array
+                items:
+                  $ref: '#/definitions/Retailer'
+              total:
+                $ref: '#/definitions/total'
   /retailers/{id}:
     get:
       summary: get retailer by id
@@ -332,13 +341,53 @@ paths:
           description: retailer not found
           schema:
             $ref: '#/definitions/Error'
-
+  /regions:
+    get:
+      summary: list regions
+      x-internal: true
+      tags:
+        - Regions
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              regions:
+                type: array
+                items:
+                  $ref: '#/definitions/Region'
+              total:
+                $ref: '#/definitions/total'
+  /regions/{id}:
+    get:
+      summary: get region by id
+      x-internal: true
+      tags:
+        - Regions
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Region'
+        404:
+          description: region not found
+          schema:
+            $ref: '#/definitions/Error'
   /health_groups:
     get:
       summary: list health groups
       x-internal: true
       tags:
         - Scoring
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
       responses:
         200:
           description: success
@@ -349,6 +398,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/HealthGroup'
+              total:
+                $ref: '#/definitions/total'
   /health_groups/{id}:
     get:
       summary: get health group by id
@@ -1645,6 +1696,14 @@ definitions:
       priority:
         type: ['integer', 'null']
         description: well-known retailers have a higher priority
+  Region:
+    x-internal: true
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
   Certificate:
     type: object
     description: Certificate (e.g. EU Organic, Weidemelk, Vegetarisch, etc.)
