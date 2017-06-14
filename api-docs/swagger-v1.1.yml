@@ -126,7 +126,6 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProducts'
-        - $ref: '#/parameters/sortProductsBiz'
         - $ref: '#/parameters/ids'
         - $ref: '#/parameters/package_size_min'
         - $ref: '#/parameters/package_size_max'
@@ -209,7 +208,6 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProducts'
-        - $ref: '#/parameters/sortProductsBiz'
         - $ref: '#/parameters/ids'
       responses:
         200:
@@ -1347,38 +1345,6 @@ parameters:
     - nutrient_sugar DESC
     in: query
     description: sorting order
-    required: false
-  sortProductsBiz:
-    x-internal: true
-    name: sort
-    type: string
-    enum:
-    - nutrient_B12_benchmark
-    - nutrient_B12_benchmark DESC
-    - nutrient_calcium_benchmark
-    - nutrient_calcium_benchmark DESC
-    - nutrient_energy_benchmark
-    - nutrient_energy_benchmark DESC
-    - nutrient_fat_benchmark_saturated
-    - nutrient_fat_benchmark_saturated DESC
-    - nutrient_fat_benchmark_total
-    - nutrient_fat_benchmark_total DESC
-    - nutrient_fat_benchmark_trans
-    - nutrient_fat_benchmark_trans DESC
-    - nutrient_fiber_benchmark
-    - nutrient_fiber_benchmark DESC
-    - nutrient_iron_benchmark
-    - nutrient_iron_benchmark DESC
-    - nutrient_natrium_benchmark
-    - nutrient_natrium_benchmark DESC
-    - nutrient_protein_benchmark
-    - nutrient_protein_benchmark DESC
-    - nutrient_salt_benchmark
-    - nutrient_salt_benchmark DESC
-    - nutrient_sugar_benchmark
-    - nutrient_sugar_benchmark DESC
-    in: query
-    description: sorting order (extra values for biz detail)
     required: false
 
   sortIngredients:
