@@ -130,6 +130,7 @@ paths:
         - $ref: '#/parameters/package_size_min'
         - $ref: '#/parameters/package_size_max'
         - $ref: '#/parameters/package_size_unit'
+        - $ref: '#/parameters/maximum_age'
       responses:
         200:
           description: success
@@ -1394,6 +1395,8 @@ parameters:
     - nutrient_salt DESC
     - nutrient_sugar
     - nutrient_sugar DESC
+    - confirmed_at
+    - confirmed_at DESC
     in: query
     description: sorting order
     required: false
@@ -1490,6 +1493,12 @@ parameters:
     enum: ['g', 'ml']
     in: query
     description: restrict by package size unit
+    required: false
+  maximum_age:
+    name: maximum_age
+    type: integer
+    in: query
+    description: maximum age of products returned, filtered on confirmed_at
     required: false
   detailProduct:
     name: detail
@@ -1889,6 +1898,10 @@ definitions:
               description: url of medium-size image
       barcode:
         type: string
+      confirmed_at:
+        type: string
+        format: date-time
+        description: last timestamp on which nutrients and or ingredient information was confirmed
   ProductsHistogram:
     x-internal: true
     type: object
