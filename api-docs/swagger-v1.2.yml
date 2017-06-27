@@ -130,7 +130,7 @@ paths:
         - $ref: '#/parameters/package_size_min'
         - $ref: '#/parameters/package_size_max'
         - $ref: '#/parameters/package_size_unit'
-        - $ref: '#/parameters/maximum_age'
+        - $ref: '#/parameters/confirmed_age_max'
       responses:
         200:
           description: success
@@ -1494,8 +1494,8 @@ parameters:
     in: query
     description: restrict by package size unit
     required: false
-  maximum_age:
-    name: maximum_age
+  confirmed_age_max:
+    name: confirmed_age_max
     type: integer
     in: query
     description: maximum age of products returned, filtered on confirmed_at
