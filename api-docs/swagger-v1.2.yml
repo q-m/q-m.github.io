@@ -2090,8 +2090,3 @@ securityDefinitions:
     type: apiKey
     name: authentication_token
     in: query
-  facebook:
-    type: oauth2
-    flow: accessCode
-    authorizationUrl: 'https://api-c.thequestionmark.org/user/auth/facebook'
-    tokenUrl: 'https://api-c.thequestionmark.org/user/auth/facebook'
