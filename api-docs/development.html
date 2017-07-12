@@ -23,7 +23,6 @@
   <script src='lib/highlight.9.1.0.pack_extended.js' type='text/javascript'></script>
   <script src='lib/jsoneditor.min.js' type='text/javascript'></script>
   <script src='lib/marked.js' type='text/javascript'></script>
-  <script src='lib/swagger-oauth.js' type='text/javascript'></script>
 
   <script type="text/javascript">
     $(function () {
@@ -47,17 +46,6 @@
         dom_id: "swagger-ui-container",
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
         onComplete: function(swaggerApi, swaggerUi){
-          if(typeof initOAuth == "function") {
-            initOAuth({
-              clientId: "your-client-id",
-              clientSecret: "your-client-secret-if-required",
-              realm: "your-realms",
-              appName: "your-app-name",
-              scopeSeparator: " ",
-              additionalQueryStringParams: {}
-            });
-          }
-
           if(window.SwaggerTranslator) {
             window.SwaggerTranslator.translate();
           }
@@ -82,11 +70,6 @@
           '$1\nYou are viewing the internal version of the API documentation.\n$2'
         );
         client.info.description = client.info.description.replace(/https?:\/\/api-c\.thequestionmark\.org\//g, 'http://localhost:3000/');
-        var facebook = client.authSchemes.facebook
-        if (facebook) {
-          facebook.authorizationUrl = facebook.authorizationUrl.replace(/https?:\/\/api-c\.thequestionmark\.org\//g, 'http://localhost:3000/');
-          facebook.tokenUrl = facebook.tokenUrl.replace(/https?:\/\/api-c\.thequestionmark\.org\//g, 'http://localhost:3000/');
-        }
         return oldSuccess();
       });
 
