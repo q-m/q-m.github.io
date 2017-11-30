@@ -126,7 +126,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProducts'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/package_size_min'
         - $ref: '#/parameters/package_size_max'
         - $ref: '#/parameters/package_size_unit'
@@ -208,7 +208,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProducts'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
       responses:
         200:
           description: success
@@ -235,6 +235,7 @@ paths:
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q_name'
+        - $ref: '#/parameters/ids'
       responses:
         200:
           description: success
@@ -525,8 +526,9 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/brands_q_name'
+        - $ref: '#/parameters/brands_ids'
       responses:
         200:
           description: success
@@ -568,7 +570,7 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/certificates_q_name'
       responses:
         200:
@@ -611,7 +613,7 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/retailers_q_name'
       responses:
         200:
@@ -655,7 +657,7 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/usages_q_name'
       responses:
         200:
@@ -700,7 +702,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProductIngredients'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
       responses:
         200:
           description: success
@@ -742,7 +744,7 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
       responses:
         200:
           description: success
@@ -791,7 +793,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProductIngredients'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
       responses:
         200:
           description: success
@@ -862,7 +864,7 @@ paths:
         - $ref: '#/parameters/environment_score'
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids'
+        - $ref: '#/parameters/ids_csv'
       responses:
         200:
           description: success
@@ -1412,13 +1414,19 @@ parameters:
     description: sorting order (requires owner)
     required: false
 
+  ids_csv:
+    name: ids
+    type: string
+    in: query
+    description: fetch multiple products by id using a comma separated string
+    required: false
   ids:
     name: ids[]
     type: array
     items:
       type: integer
     in: query
-    description: fetch multiple products by id
+    description: fetch multiple records by id
     required: false
     collectionFormat: multi
   package_size_min:
@@ -1462,6 +1470,15 @@ parameters:
     in: query
     description: restrict by brand search query (name)
     required: false
+  brands_ids:
+    name: brands[ids][]
+    type: array
+    items:
+      type: integer
+    in: query
+    description: restrict brands by multiple ids
+    required: false
+    collectionFormat: multi
   certificates_q_name:
     name: certificates[q]
     type: string
