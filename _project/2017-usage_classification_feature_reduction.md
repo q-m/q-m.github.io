@@ -1,14 +1,16 @@
 ---
 layout: project
 title: Feature reduction in product classification
-priority: 5
-status: taken
+priority: 15
+status: open
 contact: wvengen
 ---
 {% include JB/setup %}
 
-After our [first step](/2017/01/31/product-categorization-with-machine-learning) in machine learning,
-where products are automatically assigned a category, there are many directions for improvement. This
+After our [first](/2017/01/31/product-categorization-with-machine-learning),
+[second](https://github.com/q-m/rabbiteye-exp/tree/master/categorization-svm-2) and
+[third step](https://github.com/q-m/rabbiteye-exp/tree/master/categorization-nn) in machine learning,
+where products are automatically assigned a category, there are some directions for improvement. This
 page describes a number of next steps that could be taken.
 
 
@@ -48,6 +50,10 @@ see how one or more _new_ training items perform in assigning a category.
 
 A solution would be to split training and validation sets by product_id in n-fold cross-validation.
 
+This [has been worked on](https://github.com/q-m/rabbiteye-exp/tree/master/categorization-svm-2#cross-validation)
+as part of an SVM-based implementation, but would still be useful to implement for the neural network
+setup. First in evaluation afterwards, then also during training.
+
 
 ### Cross-check with rules
 
@@ -68,16 +74,18 @@ algorithm, it would be useful to take into account both. That means, cross-valid
 training is done on the data as now, but validation is done on the classifier plus rules.
 
 
-## Feature reduction
+## Feature tuning
 
 Feature extraction is currently pretty crude: all words found are taken as features for
 training the support vector machine. Looking at the numbers, there are 111k training items,
-resulting in 34k features (for 1k categories). That's on the high side, and there are ways
-to reduce this. Benefits would be possibly higher accuracy (recall), but also a lot less
-memory use, which could make the classification (and training) process quite a bit faster.
+resulting in 34k features (for 1k categories). Experiments with more sophisticated feature
+extraction didn't yield much improvement. Still there may be ways to improve this.
 
-Hints:
-- Before training, remove features occuring less than x times.
+Some ideas:
+- Extracting numbers as numbers, with thresholds for values (like percentages, e.g. for
+  detecting alcohol-free drinks).
+- Combining words in n-grams.
+- Including an optional category (but it should work with and without it).
 - Add a layer between feature extraction and classification to compress features. One
   way would be to use [variational auto-encoders](https://en.wikipedia.org/wiki/Autoencoder)
   to 'compress' the feature set. This could use training items without a category.
