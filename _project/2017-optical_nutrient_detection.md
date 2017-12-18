@@ -60,8 +60,8 @@ other, more vaguely visible, products in the background.
 The packaging may be curved (a bottle, a can) or wrinkled (cookies, a bag of crisps).
 Lighting conditions can vary a lot, including uneven lighting.
 
-Covering all cases is most probably very complicated. Let's start with the basics
-first, as long as there is a substantial portion of real-word pictures that can be
+Covering all cases is likely to be very complicated. Let's start with the basics
+first, as long as there is a substantial portion of real-world pictures that can be
 recognized.
 
 ### Finding the spot
@@ -98,11 +98,35 @@ e.g. 100g and portion.
 
 ## Who may be able to provide this?
 
-- https://www.microblink.com/
-- https://www.vitronic.com/industrial-and-logistics-automation/applications/optical-character-recognition-ocr.html
-- https://www.cloudfactory.com/machine-learning/optical-character-recognition-ocr
-- http://www.wisetrend.com/abbyy_flexicapture.shtml
-- https://www.anyline.io/
-- http://www.expervision.com/find-ocr-software-by-document-types/ocr-software-for-label-processing-1
-- ...
+### Commercial
+
+Some commercial solutions and companies who've done similar things before:
+- [Microblink](https://www.microblink.com/) - real-time text recognition for mobile apps. _Nutritional information scanning_ mentioned.
+- [Anyline](https://www.anyline.com/) - mobile OCR SDK.
+- [OCR at Cloudfactory](https://www.cloudfactory.com/machine-learning/optical-character-recognition-ocr) - provides service combining OCR with human checks if needed.
+- [ABBYY FlexiCapture](https://www.abbyy.com/flexicapture/) - enterprise-level image capture and processing.
+- [Virtronic](https://www.vitronic.com/industrial-and-logistics-automation/applications/optical-character-recognition-ocr.html) - industrial machine vision company.
+- [ExperVision](http://www.expervision.com/find-ocr-software-by-document-types/ocr-software-for-label-processing-1) - OCR company, has done food label recognition before.
+- [SRI](https://www.sri.com/research-development/computer-vision)
+- [Focal Systems](https://focal.systems/solutions) also does computer vision consulting.
+- [Abto Computer Vision](https://www.abtosoftware.com/computer-vision-and-image-processing-solutions)
+- [Kitware Computer Vision](https://www.kitware.com/computer-vision/) (though focus seems to be on video)
+- [Vision++](http://visionplusplus.com/)
+
+### Higher education (NL)
+
+- [Advanced School for Computing and Imaging](http://www.asci.tudelft.nl/pages/about-asci.php), graduate school by multiple universities.
+- [TUDelft Computer Vision Lab](https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/intelligent-systems/pattern-recognition-bioinformatics/computer-vision-lab/)
+- [University of Amsterdam Computer Vision](https://ivi.fnwi.uva.nl/cv/) (plus [prof. dr. Gavrila](http://www.gavrila.net/))
+- [CWI Computation Imaging](https://www.cwi.nl/research/groups/computational-imaging), focused on 3D (but might still be relevant).
+- [TNO](http://www.tno.nl/) should do related things, but the website is not very informative.
+- [NL eScience Center Computer Vision](https://www.esciencecenter.nl/technology/expertise/computer-vision) (though not much deep learning yet).
+- [Gamera](http://gamera.informatik.hsnr.de/) developers (though probably too archive-centered instead of mobile camera pictures).
+
+It is also interesting to look at partners of vision-companies that do something tangential, like [VicarVision](http://www.vicarvision.nl/about/partners/), [EagleVision](https://www.eaglevision.nl/index.php/projects-and-partners.html).
+
+### Other links
+
+- [Awesome OCR](https://github.com/kba/awesome-ocr) - links to awesome OCR projects.
+- [Computer Vision companies](http://www.lengrand.fr/computer-vision-companies/) in Europe.
 
