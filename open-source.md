@@ -18,6 +18,9 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2017-12-20 | [wvengen](https://github.com/wvengen)               | Add full-width layout                   | [brightcontent#54](https://github.com/brightin/brightcontent/pull/54)
+| 2017-10-02 | [wvengen](https://github.com/wvengen)               | Release simple Keras production setup   | [keras-api](https://github.com/q-m/rabbiteye-exp/tree/master/keras-api)
+| 2017-06-30 | [wvengen](https://github.com/wvengen)               | Publish Tensorflow build                | [tensorflow-community-wheels#26](https://github.com/yaroslavvb/tensorflow-community-wheels/issues/26)
 | 2017-05-22 | [wvengen](https://github.com/wvengen)               | Version upgrade                         | [liblinear-ruby#7](https://github.com/kei500/liblinear-ruby/pull/7)
 | 2017-03-08 | [wvengen](https://github.com/wvengen)               | Hyperlinks for urls and emails          | [metabase#4503](https://github.com/metabase/metabase/pull/4503)
 | 2017-03-08 | [wvengen](https://github.com/wvengen)               | Fix Docker build                        | [metabase#4508](https://github.com/metabase/metabase/pull/4508)
