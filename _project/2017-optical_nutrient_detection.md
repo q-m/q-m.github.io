@@ -75,6 +75,18 @@ Alternatively, one could just identify all text in the image, and find nutrients
 Alignment is important here, as there may be multiple columns with different values for
 e.g. 100g and portion.
 
+### Technology
+
+We prefer to use open source software, because it is better maintainable, but quality
+and performance is at least as important.
+
+### Training data
+
+There are pictures available of at least 10k products, including structured nutrient tables
+(which may or may not be literally what's being displayed, but should be close). This could
+be a training set for machine learning. There is currently no labeling of which images are
+showing what part of the product, or points/areas of interest. This could, of course, be
+done for a subset.
 
 ## Existing work
 
