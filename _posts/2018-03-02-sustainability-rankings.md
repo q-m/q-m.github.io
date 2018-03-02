@@ -17,7 +17,26 @@ initiatives that provide rankings on sustainability topics, to find inspiration,
 fit in. The following summary includes world-wide and country-level indicators, as well as (food) brand ratings
 up to information on very specific categories (like meat and fish).
 
-<div style="text-align: center">
-  <iframe src="http://docs.google.com/gview?url=http://developers.thequestionmark.org/assets/20180108-sustainability-initiatives.pdf&embedded=true" style="width:700px; height:500px;" frameborder="0"></iframe>
+<div style="text-align: center" markdown="true">
+  <iframe src="/assets/ViewerJS/#/assets/20180108-sustainability-initiatives.pdf" width="700" height="500" allowfullscreen webkitallowfullscreen></iframe>
   <p><a href="/assets/20180108-sustainability-initiatives.pdf">download PDF</a></p>
+
+  ---
+
+  [UN Sustainable Development Goals](https://sustainabledevelopment.un.org/) |
+  [Social Progress Index](http://www.socialprogressindex.com/) |
+  [The Sustainability Consortium](https://www.sustainabilityconsortium.org/) |
+  [Food Sustainability Index](http://foodsustainability.eiu.com/)
+
+  [Keurmerkenwijzer](https://keurmerken.milieucentraal.nl/) |
+  [Rank A Brand](https://rankabrand.nl/) |
+  [Behind the Brands](https://www.behindthebrands.org/)
+
+  [Access to Medicine Index](https://accesstomedicineindex.org/report-cards/) |
+  [Transparantiebenchmark](https://transparantiebenchmark.nl/) |
+  [Clean Index](http://cleanindex.com/)
+
+  [VISwijzer](https://www.goedevis.nl/) |
+  [Groente- en fruitkalender](https://groentefruit.milieucentraal.nl/) |
+  [Meat your own](https://www.meatyourown.nl/)
 </div>
