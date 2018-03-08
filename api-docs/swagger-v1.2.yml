@@ -143,6 +143,11 @@ paths:
                   $ref: '#/definitions/Product'
               total:
                 $ref: '#/definitions/total'
+    post:
+      x-internal: true
+      summary: list products (same as GET but enables a client to hide parameters in the request body)
+      tags:
+        - Products
   /products/{id}:
     get:
       summary: get product by id
