@@ -1712,12 +1712,25 @@ definitions:
         type: integer
       name:
         type: string
+      description:
+        x-internal: true
+        type: string
       image_url:
         type: object
         properties:
           thumb:
             type: string
             description: url of image thumbnail
+      themes:
+        x-internal: true
+        type: array
+        description: "any of 'environment', 'social' and 'animals'"
+        items:
+          type: 'string'
+      top:
+        x-internal: true
+        type: boolean
+        description: "true if the certificate is among selected top certificates, read more about top certificates at https://keurmerken.milieucentraal.nl/wat-zijn-topkeurmerken/."
   Ingredient:
     type: object
     properties:
