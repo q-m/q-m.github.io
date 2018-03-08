@@ -131,6 +131,7 @@ paths:
         - $ref: '#/parameters/package_size_min'
         - $ref: '#/parameters/package_size_max'
         - $ref: '#/parameters/package_size_unit'
+        - $ref: '#/parameters/image'
       responses:
         200:
           description: success
@@ -216,6 +217,7 @@ paths:
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProducts'
         - $ref: '#/parameters/ids_csv'
+        - $ref: '#/parameters/image'
       responses:
         200:
           description: success
@@ -586,6 +588,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
+        - $ref: '#/parameters/image'
         - $ref: '#/parameters/brands_q_name'
         - $ref: '#/parameters/brands_ids'
       responses:
@@ -631,6 +634,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
+        - $ref: '#/parameters/image'
         - $ref: '#/parameters/certificates_q_name'
       responses:
         200:
@@ -675,6 +679,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
+        - $ref: '#/parameters/image'
         - $ref: '#/parameters/retailers_q_name'
       responses:
         200:
@@ -720,6 +725,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
+        - $ref: '#/parameters/image'
         - $ref: '#/parameters/usages_q_name'
       responses:
         200:
@@ -766,6 +772,7 @@ paths:
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProductIngredients'
         - $ref: '#/parameters/ids_csv'
+        - $ref: '#/parameters/image'
       responses:
         200:
           description: success
@@ -809,6 +816,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
+        - $ref: '#/parameters/image'
       responses:
         200:
           description: success
@@ -859,6 +867,7 @@ paths:
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProductIngredients'
         - $ref: '#/parameters/ids_csv'
+        - $ref: '#/parameters/image'
       responses:
         200:
           description: success
@@ -931,6 +940,7 @@ paths:
         - $ref: '#/parameters/social_score'
         - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
+        - $ref: '#/parameters/image'
       responses:
         200:
           description: success
@@ -1598,6 +1608,12 @@ parameters:
     x-internal: true
     # @todo Also document different responses for flat=0|1. (Hard because flat=1 is currently internal only,
     # and our client doesn't support filtering out internal responses at the moment.)
+  image:
+    name: image
+    type: boolean
+    in: query
+    description: restrict by presence of image
+    required: false
 
   histogramGroupBy:
     name: group_by
