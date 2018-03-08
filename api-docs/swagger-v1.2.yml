@@ -114,6 +114,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -196,6 +197,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -566,6 +568,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -610,6 +613,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -653,6 +657,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -697,6 +702,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -741,6 +747,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -784,6 +791,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -832,6 +840,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -904,6 +913,7 @@ paths:
         - $ref: '#/parameters/retailer_ids'
         - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
+        - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
@@ -1281,6 +1291,14 @@ parameters:
     type: integer
     in: query
     description: restrict to health group
+    x-internal: true
+    required: false
+  health_group_present:
+    name: health_group_present
+    type: boolean
+    in: query
+    enum: [true]
+    description: restrict to products that belong to a health group
     x-internal: true
     required: false
   certificate_id:
