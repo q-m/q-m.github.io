@@ -954,6 +954,23 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
+  /products/{id}/sustainability_report:
+    get:
+      summary: get product sustainability report
+      x-internal: true
+      tags:
+        - Products
+        - Scoring
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+      responses:
+        200:
+          description: success
+        404:
+          description: product not found
+          schema:
+            $ref: '#/definitions/Error'
+
   /ingredients/{id}/alternatives:
     get:
       summary: list alternatives for an ingredient (requires owner)
