@@ -1479,7 +1479,7 @@ parameters:
     - product_count
     - product_count ASC
     in: query
-    description: sorting order (requires owner)
+    description: sorting order (requires authenticated owner with full plan)
     required: false
 
   ids_csv:
@@ -1520,9 +1520,9 @@ parameters:
     name: detail
     x-internal: true
     type: string
-    enum: ['list', 'default', 'health', 'biz']
+    enum: ['list', 'default', 'health', 'biz_list', 'biz']
     in: query
-    description: detail level
+    description: detail level (biz_list and biz require owner)
     required: false
   detailIngredient:
     name: detail
@@ -1530,7 +1530,7 @@ parameters:
     type: string
     enum: ['default', 'biz']
     in: query
-    description: detail level (biz requires owner)
+    description: detail level (biz requires owner of all products in scope)
     required: false
   brands_q_name:
     name: brands[q]
