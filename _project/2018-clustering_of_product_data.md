@@ -28,4 +28,8 @@ Data points may contain varying information, but it can be assumed that the foll
 
 ### Technology
 
-We prefer to use open source software, because it is better maintainable, but quality and performance is at least as important.
+We prefer to use open source software, because it is better maintainable, but quality, performance and support are also important.
+
+### Links
+
+- [Semantic3 on UPC unversality](https://blog.semantics3.com/why-the-u-in-upc-doesnt-mean-universal-a1a675eea0ea) does something similar to this project.
