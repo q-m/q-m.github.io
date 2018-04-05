@@ -33,3 +33,7 @@ We prefer to use open source software, because it is better maintainable, but qu
 ### Links
 
 - [Semantic3 on UPC unversality](https://blog.semantics3.com/why-the-u-in-upc-doesnt-mean-universal-a1a675eea0ea) does something similar to this project.
+- [Comparing and matching product names from different stores/suppliers](https://stackoverflow.com/questions/19770113/comparing-and-matching-product-names-from-different-stores-suppliers) (Stack Overflow)
+- [Matching product strings](https://stackoverflow.com/questions/11980000/best-machine-learning-technique-for-matching-product-strings) (Stack Overflow)
+- [Unsupervised clustering of over-the-counter healthcare products into product categories](https://www.sciencedirect.com/science/article/pii/S1532046407000287) (Journal of Biomedical Informatics)
+- [Matching Unstructured Offers to Structured Product Descriptions ](https://www.microsoft.com/en-us/research/publication/matching-unstructured-offers-to-structured-product-descriptions/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F148339%2Foffermatching_kdd.pdf) - how Bing was grouping products.
