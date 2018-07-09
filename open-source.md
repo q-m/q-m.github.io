@@ -18,6 +18,8 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2018-07-06 | [wvengen](https://github.com/wvengen)               | Release small app framework             | [cordova-web-wrap](https://github.com/q-m/cordova-web-wrap)
+| 2018-07-03 | [wvengen](https://github.com/wvengen)               | Add iOS support for `AllowedSchemes`    | [cordova-plugin-inappbrowser#274](https://github.com/apache/cordova-plugin-inappbrowser/pull/274)
 | 2018-03-07 | [s-andringa](https://github.com/s-andringa)         | Make sorting optional                   | [sortable_tree_rails#10](https://github.com/maxivak/sortable_tree_rails/pull/10)
 | 2017-12-20 | [wvengen](https://github.com/wvengen)               | Add full-width layout                   | [brightcontent#54](https://github.com/brightin/brightcontent/pull/54)
 | 2017-10-02 | [wvengen](https://github.com/wvengen)               | Release simple Keras production setup   | [keras-api](https://github.com/q-m/rabbiteye-exp/tree/master/keras-api)
