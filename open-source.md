@@ -18,6 +18,8 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2018-07-19 | [wvengen](https://github.com/wvengen)               | Release source code of our mobile app   | [questionmark-app](https://github.com/q-m/questionmark-app)
+| 2018-07-16 | [wvengen](https://github.com/wvengen)               | Catch navigation before it happens      | [cordova-plugin-inappbrowser#276](https://github.com/apache/cordova-plugin-inappbrowser/pull/276)
 | 2018-07-06 | [wvengen](https://github.com/wvengen)               | Release small app framework             | [cordova-web-wrap](https://github.com/q-m/cordova-web-wrap)
 | 2018-07-03 | [wvengen](https://github.com/wvengen)               | Add iOS support for `AllowedSchemes`    | [cordova-plugin-inappbrowser#274](https://github.com/apache/cordova-plugin-inappbrowser/pull/274)
 | 2018-03-07 | [s-andringa](https://github.com/s-andringa)         | Make sorting optional                   | [sortable_tree_rails#10](https://github.com/maxivak/sortable_tree_rails/pull/10)
