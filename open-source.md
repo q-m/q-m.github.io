@@ -18,6 +18,7 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2018-08-09 | [wvengen](https://github.com/wvengen)               | Release food ingredient list parser     | [food-ingredient-parser-ruby](https://github.com/q-m/food-ingredient-parser-ruby)
 | 2018-07-19 | [wvengen](https://github.com/wvengen)               | Release source code of our mobile app   | [questionmark-app](https://github.com/q-m/questionmark-app)
 | 2018-07-16 | [wvengen](https://github.com/wvengen)               | Catch navigation before it happens      | [cordova-plugin-inappbrowser#276](https://github.com/apache/cordova-plugin-inappbrowser/pull/276)
 | 2018-07-06 | [wvengen](https://github.com/wvengen)               | Release small app framework             | [cordova-web-wrap](https://github.com/q-m/cordova-web-wrap)
