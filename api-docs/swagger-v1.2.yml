@@ -6,12 +6,12 @@ info:
     [Questionmark](http://www.thequestionmark.org/)
     stands for your right to know the story behind the products you buy: where they come from
     and how they are produced. We believe that this type of transparency is crucial to developing
-    sustainable supply chains. Our mission is to make consumers more aware of the choices they
-    have when buying a product and also to urge companies to become more transparent.
+    sustainable supply chains and healthy products. Our mission is to make consumers more aware of
+    the choices they have when buying a product and also to urge companies to become more transparent.
 
     The Questionmark API allows access to this information by third parties. The more consumers
-    see this information, the more people will be able to make a sustainable choice,
-    the more producers have an incentive to become more sustainable.
+    see this information, the more people will be able to make a sustainable and healthy choice,
+    the more producers have an incentive to become more sustainable and healthy.
 
     [Lees meer](http://www.thequestionmark.org/over) over, or
     [read more](http://www.thequestionmark.org/en/questionmark-organisation) about
@@ -47,18 +47,20 @@ info:
     ### Concepts
 
     **Products** are (food) products from the supermarket (and elsewhere) as seen by consumers, each
-    receiving their own sustainability and health score.
-
-    The _sustainability score_ is a number from 1 to 10, with 10 the best score.
-    It is the average of one or more theme scores (_environment_, _social_ and _animals_). This score
-    is a rating as compared with other products in the same comparison group.
+    receiving their own health score.
 
     The _health score_ has a scale consisting of `C2`, `C1`, `B1`, `B2` and `A` (with `A` the best score),
-    which correspond to _Nee_, _Niet echt_, _Matig_, _Redelijk_ and _Ja_ respectively. This score is
+    which correspond to _Least_, _Very poor_, _Poor_, _Fair_ and _Yes_ respectively. This score is
     awarded according to the product's health group. For historical reasons, this score is sometimes called
     _personal health score_.
 
-    [Read more about the scoring methodology](http://www.thequestionmark.org/en/method).
+    [Read more about the health scoring methodology](https://www.thequestionmark.org/en/about/health).
+
+    The _sustainability score_ and its subscores (_environment_, _social_ and _animals_) used to be a number
+    on a scale of 1 to 10. These scores have been removed in favour of a new way of sustainability ranking
+    that is currenty under development. For the purpose of backwards compatibility all products are considered
+    to have a sustainability score of `null`. All related endpoints and parameters are **deprecated** and you are
+    encouraged to stop using them.
 
     **Product alternatives** are similar products (currently based on usage, but that may change), sorted
     by most sustainable first.
@@ -80,9 +82,9 @@ info:
     [Fairtrade](http://www.fairtrade.net/), [MSC](http://www.msc.org/) or [Vegan](https://www.vegansociety.com/), as found
     on the package of the product.
 
-    **Stories** are websites, videos, images, etc. that relate to products, based on the
-    product, its brand, and its ingredients. They provide a background for consumers to read
-    more about the product, and for content providers to share their stories.
+    **Stories (deprecated)** are websites, videos, images, etc. that relate to products, based on the product, its brand,
+    and its ingredients. All of its related endpoints and parameters are deprecated. All stories have been deleted and
+    creation of new stories has been disabled.
 
   # please note that endpoints and parameters marked with `x-internal: false` are not considered to be public
 
@@ -488,6 +490,7 @@ paths:
 
   /ingredients/{id}:
     get:
+      deprecated: true
       summary: get ingredient
       x-internal: true
       tags:
@@ -506,6 +509,7 @@ paths:
 
   /stories/{id}:
     get:
+      deprecated: true
       summary: get story
       tags:
         - Stories
@@ -522,6 +526,7 @@ paths:
             $ref: '#/definitions/Error'
   /stories/{id}/like:
     post:
+      deprecated: true
       summary: like a story
       x-internal: true
       tags:
@@ -538,6 +543,7 @@ paths:
           schema:
             $ref: '#/definitions/Error'
     delete:
+      deprecated: true
       summary: unlike a story
       x-internal: true
       tags:
@@ -559,6 +565,7 @@ paths:
             $ref: '#/definitions/Error'
   /stories/{id}/flag:
     post:
+      deprecated: true
       summary: flag a story for moderation
       x-internal: true
       tags:
@@ -785,6 +792,7 @@ paths:
                 $ref: '#/definitions/total'
   /products/comparison_groups:
     get:
+      deprecated: true
       summary: list comparison groups for a product query
       x-internal: true
       tags:
@@ -831,6 +839,7 @@ paths:
                 $ref: '#/definitions/total'
   /products/stories:
     get:
+      deprecated: true
       summary: list stories for a product query
       tags:
         - Stories
@@ -879,6 +888,7 @@ paths:
                 $ref: '#/definitions/total'
   /products/ingredients:
     get:
+      deprecated: true
       summary: list ingredients for a product query
       x-internal: true
       tags:
@@ -931,6 +941,7 @@ paths:
 
   /products/{id}/stories:
     get:
+      deprecated: true
       summary: list stories for a product
       tags:
         - Stories
@@ -1025,6 +1036,7 @@ paths:
 
   /products/{id}/sustainability_report:
     get:
+      deprecated: true
       summary: get product sustainability report
       x-internal: true
       tags:
@@ -1042,6 +1054,7 @@ paths:
 
   /ingredients/{id}/alternatives:
     get:
+      deprecated: true
       summary: list alternatives for an ingredient (requires owner)
       x-internal: true
       tags:
@@ -1181,6 +1194,7 @@ paths:
                 type: boolean
   /user/invitation:
     post:
+      deprecated: true
       summary: create invitation (requires owner)
       x-internal: true
       tags:
@@ -1189,6 +1203,7 @@ paths:
         200:
           description: success
     delete:
+      deprecated: true
       summary: delete invitation (requires owner)
       x-internal: true
       tags:
@@ -1198,6 +1213,7 @@ paths:
           description: success
   /user/invitation/accept:
     get:
+      deprecated: true
       summary: show invitation
       x-internal: true
       tags:
@@ -1215,6 +1231,7 @@ paths:
               user:
                 $ref: '#/definitions/User'
     put:
+      deprecated: true
       summary: accept invitation
       x-internal: true
       tags:
@@ -1339,6 +1356,7 @@ parameters:
     required: false
     collectionFormat: multi
   comparison_group_id:
+    deprecated: true
     name: comparison_group_id
     type: integer
     in: query
@@ -1380,13 +1398,14 @@ parameters:
     type: boolean
     enum: [true]
     in: query
-    description: require a published (health or sustainability) score
+    description: require a published health score
     required: false
   sustainability_scored:
+    deprecated: true
     name: sustainability_scored
     type: boolean
     in: query
-    description: require a published sustainability score
+    description: "__deprecated__: an empty list is returned if true"
     required: false
   personal_health_scored:
     name: personal_health_scored
@@ -1395,10 +1414,11 @@ parameters:
     description: require a published health score
     required: false
   score:
+    deprecated: true
     name: score
     type: integer
     in: query
-    description: restrict by sustainability score
+    description: "__deprecated__: an empty list is returned for any value"
     minimum: 1
     maximum: 10
     required: false
@@ -1420,26 +1440,29 @@ parameters:
     required: false
     collectionFormat: multi
   environment_score:
+    deprecated: true
     name: environment_score
     type: integer
     in: query
-    description: restrict by environment score
+    description: "__deprecated__: an empty list is returned for any value"
     minimum: 1
     maximum: 10
     required: false
   social_score:
+    deprecated: true
     name: social_score
     type: integer
     in: query
-    description: restrict by social score
+    description: "__deprecated__: an empty list is returned for any value"
     minimum: 1
     maximum: 10
     required: false
   animals_score:
+    deprecated: true
     name: animals_score
     type: integer
     in: query
-    description: restrict by animals score
+    description: "__deprecated__: an empty list is returned for any value"
     minimum: 1
     maximum: 10
     required: false
@@ -1456,16 +1479,8 @@ parameters:
     enum:
     - name
     - name DESC
-    - score
-    - score ASC
     - personal_health_score
     - personal_health_score DESC
-    - environment_score
-    - environment_score ASC
-    - social_score
-    - social_score ASC
-    - animals_score
-    - animals_score ASC
     - nutrient_B12
     - nutrient_B12 DESC
     - nutrient_calcium
@@ -1490,8 +1505,22 @@ parameters:
     - nutrient_salt DESC
     - nutrient_sugar
     - nutrient_sugar DESC
+    - score
+    - score ASC
+    - environment_score
+    - environment_score ASC
+    - social_score
+    - social_score ASC
+    - animals_score
+    - animals_score ASC
     in: query
-    description: sorting order
+    description: >
+      sorting order.
+      __deprecated:__
+        * score (DESC)
+        * environment_score (DESC)
+        * social_score (DESC)
+        * animals_score (DESC)
     required: false
 
   sortIngredients:
@@ -1662,10 +1691,12 @@ parameters:
   histogramGroupBy:
     name: group_by
     type: string
-    enum: ['sustainability_score', 'personal_health_score']
+    enum: ['personal_health_score', 'sustainability_score']
     x-internal: true
     in: query
-    description: x-axis of the histogram
+    description: >
+      x-axis of the histogram.
+      __deprecated:__ sustainability_score
     required: false
 
   user_email:
