@@ -30,7 +30,7 @@ info:
 
     Please note that this API has a long-running beta-status. Not all imaginable endpoints
     are present, and some parameters may be different than expected (because of historical reasons).
-    With a future 2.0 version of the API, this will be cleaned up.
+    With a future 2.0 version of the API, we hope to clear this up.
 
     This documentation is also not fully complete. Be careful when relying on undocumented features,
     as they may change without notice.
@@ -73,7 +73,7 @@ info:
 
     **Usages** are the main [taxonomy](https://en.wikipedia.org/wiki/Taxonomy_%28general%29) we
     use to categorize products. Other categorizations, like the browsing categories on our
-    website, comparison groups and health groups, are derived from the usage.
+    website or health groups, are derived from the usage.
     When a product belongs to a specific usage then the product implicitly belongs to all of that usage's
     ancestors (in the hierarchy) as well.
 
@@ -81,10 +81,6 @@ info:
     [EU Organic](http://ec.europa.eu/agriculture/organic/organic-farming/what-is-organic-farming/organic-certification_en),
     [Fairtrade](http://www.fairtrade.net/), [MSC](http://www.msc.org/) or [Vegan](https://www.vegansociety.com/), as found
     on the package of the product.
-
-    **Stories (deprecated)** are websites, videos, images, etc. that relate to products, based on the product, its brand,
-    and its ingredients. All of its related endpoints and parameters are deprecated. All stories have been deleted and
-    creation of new stories has been disabled.
 
   # please note that endpoints and parameters marked with `x-internal: false` are not considered to be public
 
@@ -114,20 +110,15 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProducts'
         - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/package_size_min'
@@ -163,20 +154,15 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProducts'
         - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/package_size_min'
@@ -247,20 +233,15 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/sortProducts'
         - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/image'
@@ -488,103 +469,6 @@ paths:
                 items:
                   $ref: '#/definitions/Category'
 
-  /ingredients/{id}:
-    get:
-      deprecated: true
-      summary: get ingredient
-      x-internal: true
-      tags:
-        - Ingredients
-      parameters:
-        - $ref: '#/parameters/idInUrl'
-      responses:
-        200:
-          description: success
-          schema:
-            $ref: '#/definitions/Ingredient'
-        404:
-          description: ingredient not found
-          schema:
-            $ref: '#/definitions/Error'
-
-  /stories/{id}:
-    get:
-      deprecated: true
-      summary: get story
-      tags:
-        - Stories
-      parameters:
-        - $ref: '#/parameters/idInUrl'
-      responses:
-        200:
-          description: success
-          schema:
-            $ref: '#/definitions/Story'
-        404:
-          description: story not found
-          schema:
-            $ref: '#/definitions/Error'
-  /stories/{id}/like:
-    post:
-      deprecated: true
-      summary: like a story
-      x-internal: true
-      tags:
-        - Stories
-      parameters:
-        - $ref: '#/parameters/idInUrl'
-      responses:
-        200:
-          description: success
-          schema:
-            $ref: '#/definitions/Success'
-        401:
-          description: no authenticated user
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      deprecated: true
-      summary: unlike a story
-      x-internal: true
-      tags:
-        - Stories
-      parameters:
-        - $ref: '#/parameters/idInUrl'
-      responses:
-        200:
-          description: success
-          schema:
-            $ref: '#/definitions/Success'
-        401:
-          description: no authenticated user
-          schema:
-            $ref: '#/definitions/Error'
-        404:
-          description: story not liked by user
-          schema:
-            $ref: '#/definitions/Error'
-  /stories/{id}/flag:
-    post:
-      deprecated: true
-      summary: flag a story for moderation
-      x-internal: true
-      tags:
-        - Stories
-      parameters:
-        - $ref: '#/parameters/idInUrl'
-        - $ref: '#/parameters/device_uuid'
-        - $ref: '#/parameters/flaggingFlag'
-        - $ref: '#/parameters/flaggingOriginatingUrl'
-      responses:
-        200:
-          description: success
-          schema:
-            $ref: '#/definitions/Success'
-        404:
-          description: story not found
-          schema:
-            $ref: '#/definitions/Error'
-
   /nutrients:
     get:
       summary: list nutrients
@@ -624,20 +508,15 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/image'
         - $ref: '#/parameters/brands_q_name'
@@ -670,20 +549,15 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/image'
         - $ref: '#/parameters/certificates_q_name'
@@ -693,7 +567,7 @@ paths:
           schema:
             type: object
             properties:
-              stories:
+              certificates:
                 type: array
                 items:
                   $ref: '#/definitions/Certificate'
@@ -715,20 +589,15 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/image'
         - $ref: '#/parameters/retailers_q_name'
@@ -761,20 +630,15 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/image'
         - $ref: '#/parameters/usages_q_name'
@@ -790,179 +654,6 @@ paths:
                   $ref: '#/definitions/Usage'
               total:
                 $ref: '#/definitions/total'
-  /products/comparison_groups:
-    get:
-      deprecated: true
-      summary: list comparison groups for a product query
-      x-internal: true
-      tags:
-        - Scoring
-      parameters:
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/q'
-        - $ref: '#/parameters/usage_id'
-        - $ref: '#/parameters/usage_ids'
-        - $ref: '#/parameters/category_id'
-        - $ref: '#/parameters/brand_id'
-        - $ref: '#/parameters/brand_ids'
-        - $ref: '#/parameters/retailer_id'
-        - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
-        - $ref: '#/parameters/health_group_id'
-        - $ref: '#/parameters/health_group_present'
-        - $ref: '#/parameters/certificate_id'
-        - $ref: '#/parameters/certificate_ids'
-        - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
-        - $ref: '#/parameters/personal_health_scored'
-        - $ref: '#/parameters/score'
-        - $ref: '#/parameters/personal_health_score'
-        - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/sortProductIngredients'
-        - $ref: '#/parameters/ids_csv'
-        - $ref: '#/parameters/image'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              stories:
-                type: array
-                items:
-                  $ref: '#/definitions/ComparisonGroup'
-              total:
-                $ref: '#/definitions/total'
-  /products/stories:
-    get:
-      deprecated: true
-      summary: list stories for a product query
-      tags:
-        - Stories
-      parameters:
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/q'
-        - $ref: '#/parameters/usage_id'
-        - $ref: '#/parameters/usage_ids'
-        - $ref: '#/parameters/category_id'
-        - $ref: '#/parameters/brand_id'
-        - $ref: '#/parameters/brand_ids'
-        - $ref: '#/parameters/retailer_id'
-        - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
-        - $ref: '#/parameters/health_group_id'
-        - $ref: '#/parameters/health_group_present'
-        - $ref: '#/parameters/certificate_id'
-        - $ref: '#/parameters/certificate_ids'
-        - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
-        - $ref: '#/parameters/personal_health_scored'
-        - $ref: '#/parameters/score'
-        - $ref: '#/parameters/personal_health_score'
-        - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/ids_csv'
-        - $ref: '#/parameters/image'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              stories:
-                type: array
-                items:
-                  # @todo fix API to return: $ref: '#/definitions/Story'
-                  type: object
-                  properties:
-                    url:
-                      type: string
-              total:
-                $ref: '#/definitions/total'
-  /products/ingredients:
-    get:
-      deprecated: true
-      summary: list ingredients for a product query
-      x-internal: true
-      tags:
-        - Ingredients
-      parameters:
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/detailIngredient'
-        - $ref: '#/parameters/q'
-        - $ref: '#/parameters/usage_id'
-        - $ref: '#/parameters/usage_ids'
-        - $ref: '#/parameters/category_id'
-        - $ref: '#/parameters/brand_id'
-        - $ref: '#/parameters/brand_ids'
-        - $ref: '#/parameters/retailer_id'
-        - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
-        - $ref: '#/parameters/health_group_id'
-        - $ref: '#/parameters/health_group_present'
-        - $ref: '#/parameters/certificate_id'
-        - $ref: '#/parameters/certificate_ids'
-        - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
-        - $ref: '#/parameters/personal_health_scored'
-        - $ref: '#/parameters/score'
-        - $ref: '#/parameters/personal_health_score'
-        - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
-        - $ref: '#/parameters/sortProductIngredients'
-        - $ref: '#/parameters/ids_csv'
-        - $ref: '#/parameters/image'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              stories:
-                type: array
-                items:
-                  $ref: '#/definitions/Ingredient'
-              total:
-                $ref: '#/definitions/total'
-        401:
-          description: no authenticated owner
-          schema:
-            $ref: '#/definitions/Error'
-
-  /products/{id}/stories:
-    get:
-      deprecated: true
-      summary: list stories for a product
-      tags:
-        - Stories
-      parameters:
-        - $ref: '#/parameters/idInUrl'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              stories:
-                type: array
-                items:
-                  $ref: '#/definitions/Story'
-              total:
-                $ref: '#/definitions/total'
-        404:
-          description: product not found
-          schema:
-            $ref: '#/definitions/Error'
 
   /products/histogram:
     get:
@@ -980,20 +671,15 @@ paths:
         - $ref: '#/parameters/brand_ids'
         - $ref: '#/parameters/retailer_id'
         - $ref: '#/parameters/retailer_ids'
-        - $ref: '#/parameters/comparison_group_id'
         - $ref: '#/parameters/health_group_id'
         - $ref: '#/parameters/health_group_present'
         - $ref: '#/parameters/certificate_id'
         - $ref: '#/parameters/certificate_ids'
         - $ref: '#/parameters/scored'
-        - $ref: '#/parameters/sustainability_scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
-        - $ref: '#/parameters/environment_score'
-        - $ref: '#/parameters/social_score'
-        - $ref: '#/parameters/animals_score'
         - $ref: '#/parameters/ids_csv'
         - $ref: '#/parameters/image'
       responses:
@@ -1006,31 +692,6 @@ paths:
                 $ref: '#/definitions/ProductsHistogram'
         401:
           description: no authenticated owner
-          schema:
-            $ref: '#/definitions/Error'
-
-  /products/{id}/scoring_report:
-    get:
-      summary: get product scoring report (requires owner of product)
-      x-internal: true
-      tags:
-        - Scoring
-      parameters:
-        - $ref: '#/parameters/idInUrl'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              scoring_report:
-                $ref: '#/definitions/ScoringReport'
-        401:
-          description: product not owned by authenticated user
-          schema:
-            $ref: '#/definitions/Error'
-        404:
-          description: product not found
           schema:
             $ref: '#/definitions/Error'
 
@@ -1049,33 +710,6 @@ paths:
           description: success
         404:
           description: product not found
-          schema:
-            $ref: '#/definitions/Error'
-
-  /ingredients/{id}/alternatives:
-    get:
-      deprecated: true
-      summary: list alternatives for an ingredient (requires owner)
-      x-internal: true
-      tags:
-        - Ingredients
-      parameters:
-        - $ref: '#/parameters/idInUrl'
-        - $ref: '#/parameters/page'
-        - $ref: '#/parameters/per_page'
-        - $ref: '#/parameters/sortIngredients'
-      responses:
-        200:
-          description: success
-          schema:
-            type: object
-            properties:
-              ingredients:
-                $ref: '#/definitions/IngredientBiz'
-              total:
-                $ref: '#/definitions/total'
-        401:
-          description: no authenticated owner
           schema:
             $ref: '#/definitions/Error'
 
@@ -1159,11 +793,7 @@ paths:
       tags:
         - Users
       parameters:
-        - $ref: '#/parameters/user_preferences_environment'
-        - $ref: '#/parameters/user_preferences_social'
-        - $ref: '#/parameters/user_preferences_animals'
         - $ref: '#/parameters/user_retailer_ids'
-        - $ref: '#/parameters/user_device_uuid'
         # there are more owner-related parameters
       responses:
         200:
@@ -1355,14 +985,6 @@ parameters:
     description: restrict to retailers
     required: false
     collectionFormat: multi
-  comparison_group_id:
-    deprecated: true
-    name: comparison_group_id
-    type: integer
-    in: query
-    description: restrict to comparison group
-    x-internal: true
-    required: false
   health_group_id:
     name: health_group_id
     type: integer
@@ -1400,13 +1022,6 @@ parameters:
     in: query
     description: require a published health score
     required: false
-  sustainability_scored:
-    deprecated: true
-    name: sustainability_scored
-    type: boolean
-    in: query
-    description: "__deprecated__: an empty list is returned if true"
-    required: false
   personal_health_scored:
     name: personal_health_scored
     type: boolean
@@ -1439,33 +1054,6 @@ parameters:
     description: restrict by health scores
     required: false
     collectionFormat: multi
-  environment_score:
-    deprecated: true
-    name: environment_score
-    type: integer
-    in: query
-    description: "__deprecated__: an empty list is returned for any value"
-    minimum: 1
-    maximum: 10
-    required: false
-  social_score:
-    deprecated: true
-    name: social_score
-    type: integer
-    in: query
-    description: "__deprecated__: an empty list is returned for any value"
-    minimum: 1
-    maximum: 10
-    required: false
-  animals_score:
-    deprecated: true
-    name: animals_score
-    type: integer
-    in: query
-    description: "__deprecated__: an empty list is returned for any value"
-    minimum: 1
-    maximum: 10
-    required: false
   coded:
     name: coded
     type: boolean
@@ -1505,22 +1093,8 @@ parameters:
     - nutrient_salt DESC
     - nutrient_sugar
     - nutrient_sugar DESC
-    - score
-    - score ASC
-    - environment_score
-    - environment_score ASC
-    - social_score
-    - social_score ASC
-    - animals_score
-    - animals_score ASC
     in: query
-    description: >
-      sorting order.
-      __deprecated:__
-        * score (DESC)
-        * environment_score (DESC)
-        * social_score (DESC)
-        * animals_score (DESC)
+    description: sorting order.
     required: false
 
   sortIngredients:
@@ -1630,14 +1204,6 @@ parameters:
     in: query
     description: detail level (biz_list and biz require owner)
     required: false
-  detailIngredient:
-    name: detail
-    x-internal: true
-    type: string
-    enum: ['default', 'biz']
-    in: query
-    description: detail level (biz requires owner of all products in scope)
-    required: false
   brands_q_name:
     name: brands[q]
     type: string
@@ -1691,12 +1257,10 @@ parameters:
   histogramGroupBy:
     name: group_by
     type: string
-    enum: ['personal_health_score', 'sustainability_score']
+    enum: ['personal_health_score']
     x-internal: true
     in: query
-    description: >
-      x-axis of the histogram.
-      __deprecated:__ sustainability_score
+    description: x-axis of the histogram.
     required: false
 
   user_email:
@@ -1716,37 +1280,11 @@ parameters:
     enum: ['questionmark-app', 'checkit']
     in: query
     required: false
-  user_preferences_environment:
-    name: user[preferences][environment]
-    type: string
-    enum: ['less_important', 'equally_important', 'more_important']
-    in: query
-    description: importance of environment score
-    required: false
-  user_preferences_social:
-    name: user[preferences][social]
-    type: string
-    enum: ['less_important', 'equally_important', 'more_important']
-    in: query
-    description: importance of human rights score
-    required: false
-  user_preferences_animals:
-    name: user[preferences][animals]
-    type: string
-    enum: ['less_important', 'equally_important', 'more_important']
-    description: importance of animal score
-    in: query
-    required: false
   user_retailer_ids:
     name: user[retailer_ids][]
     type: integer
     in: query
     description: preferred retailer
-    required: false
-  user_device_uuid:
-    name: user[device_uuid]
-    type: string
-    in: query
     required: false
   email:
     name: email
@@ -1759,37 +1297,11 @@ parameters:
     enum: ['questionmark-app', 'checkit']
     in: query
     required: false
-  device_uuid:
-    name: device_uuid
-    type: string
-    in: query
-    required: false
   invitation_token:
     name: invitation_token
     type: string
     in: query
     required: true
-
-  flaggingFlag:
-    name: flagging[flag]
-    type: string
-    enum: ['spam', 'offensive', 'irrelevant', 'commercial', 'old', 'other']
-    x-internal: true
-    in: query
-    description: flagging reason
-    required: true
-  flaggingOriginatingUrl:
-    name: flagging[originating_url]
-    type: string
-    x-internal: true
-    in: query
-    description: url of page where the story was shown
-  flaggingDeviceUuid:
-    name: device_uuid
-    type: string
-    in: query
-    description: device identifier (required if not logged in)
-    required: false
 
 definitions:
   # models
@@ -1845,33 +1357,6 @@ definitions:
         x-internal: true
         type: boolean
         description: "true if the certificate is among selected top certificates, read more about top certificates at https://keurmerken.milieucentraal.nl/wat-zijn-topkeurmerken/."
-  Ingredient:
-    type: object
-    properties:
-      id:
-        type: integer
-      name:
-        type: string
-  IngredientBiz:
-    type: object
-    properties:
-      id:
-        type: integer
-      name:
-        type: string
-      base_name:
-        type: string
-      properties:
-        type: object
-      scoring_data:
-        type: object
-      private:
-        type: boolean
-  ProductIngredient:
-    type: object
-    properties:
-      ingredient:
-        $ref: '#/definitions/Ingredient'
   ProductNutrient:
     type: object
     properties:
@@ -1903,7 +1388,7 @@ definitions:
     properties:
       type:
         type: string
-        enum: ['nutrient_rule' ,'nutrient_comparison_rule', 'ingredient_base_rule', 'static_rule']
+        enum: ['nutrient_rule' ,'nutrient_comparison_rule', 'ingredient_absence_rule', 'static_rule']
       nutrient_code:
         type: string
       cmp:
@@ -1920,12 +1405,9 @@ definitions:
         enum: ['A', 'B1', 'B2', 'C1', 'C2']
       of:
         type: string
-      ingredient_base_type:
+      ingredient_absence:
         type: string
-      fat_trans:
-        type: boolean
-      present:
-        type: boolean
+        enum: ['sugar', 'salt']
   SimpleUsage:
     type: object
     properties:
@@ -1956,29 +1438,6 @@ definitions:
         type: array
         items:
           - $ref: '#/definitions/Category'
-  Story:
-    type: object
-    properties:
-      id:
-        type: integer
-      url:
-        type: string
-      title:
-        type: string
-      description:
-        type: ['null', 'string']
-      type:
-        type: 'string'
-        enum: ['photo', 'video', 'link', 'rich', 'html']
-      image:
-        type: object
-        properties:
-          url:
-            type: string
-          width:
-            type: number
-          height:
-            type: number
   Nutrient:
     type: object
     properties:
@@ -1997,32 +1456,14 @@ definitions:
       brand_name:
         type: string
         description: product brand
-      score:
-        type: ['integer', 'null']
-        description: sustainability score (1-10)
       personal_health_score:
         type: ['string', 'null']
         enum: ['A', 'B1', 'B2', 'C1', 'C2']
         description: health score
-      theme_scores:
-        type: array
-        items:
-          type: object
-          properties:
-            theme_key:
-              type: string
-              description: sustainability theme (environment, social or animals)
-            score:
-              type: integer
-              description: sustainability theme score (1-10)
       product_nutrients:
         type: array
         items:
           - $ref: '#/definitions/ProductNutrient'
-      product_ingredients:
-        type: array
-        items:
-          - $ref: '#/definitions/ProductIngredient'
       usages:
         type: array
         description: (hierarchical) list of product usages (categories)
@@ -2062,67 +1503,6 @@ definitions:
           description: score-number pair
           items:
             type: ['string', 'number']
-  ScoringReportScore:
-    x-internal: true
-    type: object
-    properties:
-      id:
-        type: string
-      label:
-        type: string
-        description: human-readable name for this scoring theme
-      type:
-        type: string
-        enum: ['Score', 'Impact']
-        description: a score is a rating from 1-10 (10 is best), while an impact is a risk (0 is best)
-      value:
-        type: number
-        format: float
-        description: the score or impact of this scoring theme (depending on type)
-      weight:
-        type: number
-        format: float
-        description: the weight this score has among its peers
-      impact:
-        type: number
-        format: float
-        description: relative impact for the product, the sum of all impacts is the total impact
-      description:
-        type: object
-        properties:
-          title:
-            type: string
-            description: short human-readable name
-          body:
-            type: string
-            description: longer explanation of this scoring theme
-          references:
-            type: array
-            description: external references about background, methodology and sources
-            items:
-              type: object
-              properties:
-                title:
-                  type: string
-                url:
-                  type: string
-      scoring_data_name:
-        type: string
-        description: optional data field name for sorting ingredients
-      children:
-        type: array
-        items:
-          $ref: '#/definitions/ScoringReportScore'
-  ScoringReport:
-    x-internal: true
-    type: object
-    properties:
-      generated_on:
-        type: string
-        format: date
-        description: date score was generated
-      score:
-        $ref: '#/definitions/ScoringReportScore'
 
   User:
     x-internal: true
@@ -2130,65 +1510,19 @@ definitions:
     properties:
       id:
         type: integer
-      preferences:
-        type: object
-        properties:
-          environment:
-            type: string
-            enum: ['less_important', 'more_important']
-          social:
-            type: string
-            enum: ['less_important', 'more_important']
-          animals:
-            type: string
-            enum: ['less_important', 'more_important']
       retailer_ids:
         type: array
         description: preferred retailers
         items:
           type: integer
-      preferences_set:
-        type: boolean
-      can_preview:
-        type: boolean
-        description: whether the user can view staged scores
-      device_uuid:
-        type: string
       email:
         type: string
         description: email address (only for email login)
-      login_provider:
-        type: string
-        description: external login provider (only for external login)
-      uid:
-        type: string
-        description: external user identifier (only for external login)
       name:
         type: string
-        description: name (only for external login and owners)
-      username:
-        type: string
-        description: username (only for external login)
-      gender:
-        type: string
-        description: gender (only for external login)
-      location:
-        type: string
-        description: location (only for external login)
-      locale:
-        type: string
+        description: name (only for owners)
       created:
         type: string
-      liked_resource_gids:
-        type: array
-        description: resources liked
-        items:
-          type: string
-      flagged_resource_gids:
-        type: array
-        description: resources flagged for removal
-        items:
-          type: string
       # @todo owner fields
 
   total:
