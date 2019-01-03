@@ -1029,7 +1029,6 @@ parameters:
     description: require a published health score
     required: false
   score:
-    deprecated: true
     name: score
     type: integer
     in: query
