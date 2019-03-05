@@ -10,7 +10,7 @@ We love [open source](https://en.wikipedia.org/wiki/Open_source), and we use a
 lot of [open source software](https://en.wikipedia.org/wiki/Open-source_software).
 Wanting to be good citizens, we try to contribute back to the community where it makes sense.
 This doesn't only help others, but also ourselves in improving code quality.
-And that's fully in-line with [our mission](http://www.thequestionmark.org/en/questionmark-organisation)
+And that's fully in-line with [our mission](https://www.thequestionmark.org/en/about-us)
 to improve sustainability.
 
 
