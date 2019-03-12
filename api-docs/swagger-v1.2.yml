@@ -62,8 +62,11 @@ info:
     to have a sustainability score of `null`. All related endpoints and parameters are **deprecated** and you are
     encouraged to stop using them.
 
-    **Product alternatives** are similar products (currently based on usage, but that may change), sorted
-    by most sustainable first.
+    **Product alternatives** are similar products (currently based on usage, but that may change). Unless a specific
+    order is requested by means of the `sort` parameter, "recommended" alternatives are ordered on top. Ties are
+    broken using a random factor, because no brand should be recommended over another based on an arbitrary property,
+    such as its name. However, this randomness breaks pagination. Therefore the `page` parameter is ignored when the
+    default order is applied (i.e. it is always considered to be "1").
 
     **Retailers** are most importantly supermarkets. We focus on 8 of about 50, being
     [Albert Heijn](http://www.ah.nl/), [Jumbo](http://www.jumbo.com/), [Plus](http://www.plus.nl/),
@@ -1064,10 +1067,12 @@ parameters:
     name: sort
     type: string
     enum:
+    - confirmed_at
+    - confirmed_at ASC
     - name
     - name DESC
-    - personal_health_score
-    - personal_health_score DESC
+    - last_updated
+    - last_updated ASC
     - nutrient_B12
     - nutrient_B12 DESC
     - nutrient_calcium
@@ -1092,8 +1097,12 @@ parameters:
     - nutrient_salt DESC
     - nutrient_sugar
     - nutrient_sugar DESC
+    - personal_health_score
+    - personal_health_score DESC
+    - top_certificates_count
+    - top_certificates_count DESC
     in: query
-    description: sorting order.
+    description: sorting order, default value is "name", unless `q` is given, then the default order is determined by search rank
     required: false
 
   sortIngredients:
