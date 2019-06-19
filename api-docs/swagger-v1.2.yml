@@ -85,6 +85,9 @@ info:
     [Fairtrade](http://www.fairtrade.net/), [MSC](http://www.msc.org/) or [Vegan](https://www.vegansociety.com/), as found
     on the package of the product.
 
+    **Rankings** are publications from Questionmark about a product category. Each contains a list of products at
+    a certain point in time, ranked by sustainability and health issues. [See them here](https://www.thequestionmark.org/qm-wijzer/).
+
   # please note that endpoints and parameters marked with `x-internal: false` are not considered to be public
 
 host: api-c.thequestionmark.org
@@ -716,6 +719,45 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
+  /rankings:
+    get:
+      summary: list rankings
+      x-internal: true
+      tags:
+        - Rankings
+      parameters:
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/per_page'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              rankings:
+                type: array
+                items:
+                  $ref: '#/definitions/RankingForList'
+              total:
+                $ref: '#/definitions/total'
+  /rankings/{id}:
+    get:
+      summary: get ranking by id
+      x-internal: true
+      tags:
+        - Rankings
+      parameters:
+        - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/preview_token'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/Ranking'
+        404:
+          description: ranking not found
+          schema:
+            $ref: '#/definitions/Error'
 
   /user/sign_in:
     post:
@@ -1271,6 +1313,14 @@ parameters:
     description: x-axis of the histogram.
     required: false
 
+  preview_token:
+    name: preview_token
+    type: string
+    x-internal: true
+    in: query
+    description: secret token to preview unpublished content
+    required: false
+
   user_email:
     name: user[email]
     type: string
@@ -1511,6 +1561,159 @@ definitions:
           description: score-number pair
           items:
             type: ['string', 'number']
+
+  RankingForList:
+    x-internal: true
+    type: object
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      cover_image_url:
+        type: object
+        properties:
+          medium:
+            type: string
+            description: url of medium-size cover image
+          large:
+            type: string
+            description: url of full-size cover image
+      updated_on:
+        type: string
+        format: date
+        description: last published date (or last updated for preview)
+      renews:
+        description: if this ranking is a followup to another ranking, this is present and contains the ranking details
+  Ranking:
+    x-internal: true
+    type: object
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      intro:
+        type: string
+      disclaimer:
+        type: string
+      cover_image_url:
+        type: object
+        properties:
+          medium:
+            type: string
+            description: url of medium-size cover image
+          large:
+            type: string
+            description: url of full-size cover image
+      sharing_image_url:
+        type: string
+        description: url of image used for social sharing (like an opengraph tag)
+      updated_on:
+        type: string
+        format: date
+        description: last published date (or last updated for preview)
+      renews:
+        $ref: '#/definitions/RankingForList'
+      weights:
+        type: array
+        description: topics used in the ranking with their weights
+        items:
+          type: object
+          properties:
+            title:
+              type: string
+            value:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: weight (0-1)
+            theme:
+              type: string
+      ranking_items:
+        type: array
+        description: products in the ranking (best first)
+        items:
+          $ref: '#/definitions/RankingProduct'
+      reactions:
+        type: array
+        description: reactions from producers
+        items:
+          $ref: '#/definitions/RankingReaction'
+  RankingProduct:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: product id
+      name:
+        type: string
+        description: product name
+      image_urls:
+        type: array
+        description: product image (0-1 images)
+        items:
+          type: object
+          properties:
+            thumb:
+              type: string
+              description: url of image thumbnail
+            medium:
+              type: string
+              description: url of medium-size image
+      position:
+        type: integer
+        minimum: 1
+        description: position in the ranking
+      position_class:
+        type: string
+        enum: ['front', 'middle', 'back']
+        description: to which ranking group the product belongs
+      sustainability:
+        type: object
+        properties:
+          score:
+            type: integer
+            minimum: 0
+            maximum: 5
+            description: sustainability score (0-5)
+          best:
+            type: boolean
+            description: whether this product has the best sustainability score
+          text:
+            type: string
+            description: explanation of the sustainability score (HTML)
+      health:
+        type: object
+        properties:
+          score:
+            type: integer
+            minimum: 0
+            maximum: 5
+            description: health score (0-5)
+          best:
+            type: boolean
+            description: whether this product has the best health score
+          text:
+            type: string
+            description: explanation of the health score (HTML, often not present)
+          product_nutrients:
+            type: array
+            items:
+              - $ref: '#/definitions/ProductNutrient'
+      brand:
+        $ref: '#/definitions/Brand'
+      top_certificates:
+        type: array
+        items:
+          - $ref: '#/definitions/Certificate'
+  RankingReaction:
+    type: object
+    properties:
+      text:
+        type: string
+      author:
+        type: string
 
   User:
     x-internal: true
