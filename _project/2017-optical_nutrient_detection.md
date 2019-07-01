@@ -95,6 +95,8 @@ done for a subset.
   [initial funding](https://www.sbir.gov/sbirsearch/detail/1008737);
   [trademark](https://trademarks.justia.com/876/81/nutrisnap-87681393.html)).
 * OpenFoodFacts has [plans for OCR](https://en.wiki.openfoodfacts.org/OCR/Roadmap).
+  - they already have [nutrient table detection](https://github.com/tensorflow/models/tree/master/research/object_detection)
+  - based on TensorFlow's [object detection model](https://github.com/tensorflow/models/tree/master/research/object_detection)
 * Some other people [who built similar apps](https://dsp.stackexchange.com/questions/2433/nutrition-facts-label-ocr).
   Takeaways:
   - can use Tesseract, or something like [ABBYY](http://www.wisetrend.com/abbyy_flexicapture.shtml)
