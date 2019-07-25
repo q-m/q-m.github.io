@@ -5,7 +5,7 @@ author: s-andringa
 tags: [classification, pattern matching, expert system]
 image: /assets/hierarchy.png
 ---
-A vital part of Questionmark's mission is gathering, interpreting and augmenting food stuff data. By doing so Questionmark is able to gain useful sustainability and health-related insights into the assortments of the largest food retailers in the Netherlands. An important step in this process is classifying products. Knowing a product's category makes it possible to infer all kinds of important information that might otherwise be unavailable, such as serving size and substance density.
+A vital part of Questionmark's activities is gathering, interpreting and augmenting food stuff data. By doing so Questionmark is able to gain useful sustainability and health-related insights into the assortments of the largest food retailers in the Netherlands. An important step in this process is classifying products. Knowing a product's category makes it possible to infer all kinds of important information that might otherwise be unavailable, such as serving size and substance density.
 
 Every week thousands of products need to be categorized into 1500+ categories, so clearly the goal is to automate as much as possible. For this purpose Questionmark combines two different systems: one based on machine learning and one which is a so-called _expert system_. This article focusses on the latter. It describes the expert system's rationale, design, and preliminary conclusions.
 
