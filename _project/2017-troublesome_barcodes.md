@@ -16,6 +16,9 @@ We currently don't have a focus on improving this, but it would still be nice to
 Not only would this help users of our app, but it may also improve barcode reading in general,
 e.g. by submitting a patch to an open source project.
 
+Note that Google ML Kit has an (offline) [barcode scanner](https://firebase.google.com/docs/ml-kit/read-barcodes)
+that may suffice already. Or at the very least, it would be something to start from.
+
 
 # Issues
 
