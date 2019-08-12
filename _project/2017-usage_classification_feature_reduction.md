@@ -1,6 +1,6 @@
 ---
 layout: project
-title: Feature reduction in product classification
+title: Improving product classification
 priority: 15
 status: open
 contact: wvengen
