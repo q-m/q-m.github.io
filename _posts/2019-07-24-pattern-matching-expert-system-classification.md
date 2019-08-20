@@ -27,7 +27,7 @@ First of all, it can help narrowing down machine learning predictions. For insta
 
 Additionally, a machine learning-based system needs a growing amount of validated training data in order to improve itself. This means that its predictions will need to be manually validated and corrected where necessary, before they can be fed back to the system. Contrarily, predictions made by an expert system do not always require manual validation. Not only does this save manual labour, it can also automatically generate legitimate training data and therefore help improving machine learning predictions.
 
-Finally an expert system is not a black box like many machine learning-based systems. This makes it easier to inspect, debug and adapt.
+Finally an expert system is not a black box like some machine learning solutions, such as neural networks. This makes it easier to inspect, debug and adapt.
 
 Of course it also has its drawbacks. Foremost, it requires knowledge and this knowledge needs to be inserted and managed. This still requires manual labour and can be a tedious practice.
 
@@ -61,7 +61,7 @@ Pattern matching is a technique used to match a pattern against sequences of tok
 fruit.*>\s*apples?(\s*>|$)
 ```
 
-There are some problems with regular expressions that make it a suboptimal choice for describing our rules. They are hard to learn, they quickly become complex and hard to read, and they are too generic and powerful. All of this increases the chance of mistakes.
+There are some problems with regular expressions that make it a suboptimal choice for describing our rules. They are hard to learn, they quickly become complex and hard to read, and they are too generic and powerful. All of this increases the chance of mistakes, especially when non-technical users must use them.
 
 An interesting alternative is PostgreSQL's [ltree](https://www.postgresql.org/docs/current/ltree.html) extension. It features a language specifically designed to match tree paths. Unfortunately it does not have all the features that we require. And it has been implemented for PostgreSQL only. But if that's what you're using it might be worth taking a look at.
 
