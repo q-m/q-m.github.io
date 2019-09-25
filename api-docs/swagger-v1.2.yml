@@ -726,6 +726,7 @@ paths:
       tags:
         - Rankings
       parameters:
+        - $ref: '#/parameters/locale'
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
       responses:
@@ -748,6 +749,7 @@ paths:
         - Rankings
       parameters:
         - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/locale'
         - $ref: '#/parameters/preview_token'
       responses:
         200:
@@ -947,6 +949,13 @@ parameters:
     required: true
 
   # query parameters
+  locale:
+    name: locale
+    type: string
+    enum: ['nl', 'en']
+    in: query
+    description: prefer content in a specific language
+    required: false
   page:
     name: page
     type: integer
