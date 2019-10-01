@@ -105,6 +105,7 @@ paths:
       tags:
         - Products
       parameters:
+        - $ref: '#/parameters/locale'
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/detailProduct'
@@ -149,6 +150,7 @@ paths:
       tags:
         - Products
       parameters:
+        - $ref: '#/parameters/locale'
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/detailProduct'
@@ -228,6 +230,7 @@ paths:
         - Products
       parameters:
         - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/locale'
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/detailProduct'
@@ -711,6 +714,7 @@ paths:
         - Scoring
       parameters:
         - $ref: '#/parameters/idInUrl'
+        - $ref: '#/parameters/locale'
       responses:
         200:
           description: success
