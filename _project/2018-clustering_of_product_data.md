@@ -37,3 +37,4 @@ We prefer to use open source software, because it is better maintainable, but qu
 - [Matching product strings](https://stackoverflow.com/questions/11980000/best-machine-learning-technique-for-matching-product-strings) (Stack Overflow)
 - [Unsupervised clustering of over-the-counter healthcare products into product categories](https://www.sciencedirect.com/science/article/pii/S1532046407000287) (Journal of Biomedical Informatics)
 - [Matching Unstructured Offers to Structured Product Descriptions ](https://www.microsoft.com/en-us/research/publication/matching-unstructured-offers-to-structured-product-descriptions/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F148339%2Foffermatching_kdd.pdf) - how Bing was grouping products.
+- [Weaviate](https://www.semi.technology/documentation/weaviate/current/) may be interesting to try out.
