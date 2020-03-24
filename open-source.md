@@ -18,6 +18,7 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2020-03-17 | [wvengen](https://github.com/wvengen)               | Release fish details parser             | [food-fish-parser-ruby](https://github.com/q-m/food-fish-parser-ruby)
 | 2019-06-24 | [wvengen](https://github.com/wvengen)               | Return to original page after login     | [brightcontent#57](https://github.com/brightin/brightcontent/pull/57)
 | 2019-05-04 | [s-andringa](https://github.com/s-andringa)         | Release tiered category expressions     | [tiered_category_expressions](https://github.com/q-m/tiered_category_expressions)
 | 2018-08-09 | [wvengen](https://github.com/wvengen)               | Release food ingredient list parser     | [food-ingredient-parser-ruby](https://github.com/q-m/food-ingredient-parser-ruby)
