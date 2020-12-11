@@ -3,7 +3,7 @@ layout: post
 title: Matching ingredients with linked data
 author: wvengen
 tags: [data, linked data]
-image: 
+image: /assets/product-ingredients-sample.jpg
 ---
 With a slow rise in the awareness of the climate emergency, there is surfacing
 some commitment to take action on this, also by governments. One action is to
