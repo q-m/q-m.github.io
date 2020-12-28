@@ -49,3 +49,4 @@ separator, footnote, etc.) This can be fed to a sequence model.
 - [seq2seq](https://github.com/farizrahman4u/seq2seq) - sequence to sequence learning with Keras
 - [seq2seq with Tensorflow](https://apimirror.com/tensorflow~guide/tutorials/seq2seq)
 - [AddressNet](https://github.com/jasonrig/address-net) ([article](https://towardsdatascience.com/addressnet-how-to-build-a-robust-street-address-parser-using-a-recurrent-neural-network-518d97b9aebd))
+- [Ingredient list parsing with NLP](https://www.kaggle.com/db102291/ingredient-list-parsing-with-nlp) basic example on Kaggle
