@@ -775,6 +775,7 @@ paths:
         - $ref: '#/parameters/user_email'
         - $ref: '#/parameters/user_password'
         - $ref: '#/parameters/user_app'
+        - $ref: '#/parameters/plan'
       responses:
         200:
           description: login failed (`success` is `false`) or succeeded
@@ -794,6 +795,8 @@ paths:
       x-internal: true
       tags:
         - Users
+      parameters:
+        - $ref: '#/parameters/plan'
       responses:
         200:
           description: success (always)
@@ -1373,6 +1376,12 @@ parameters:
     type: string
     in: query
     required: true
+  plan:
+    name: plan
+    type: string
+    in: query
+    description: require user to have this plan (comma-separated to allow one of multiple plans)
+    required: false
 
 definitions:
   # models
