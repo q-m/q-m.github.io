@@ -357,6 +357,7 @@ paths:
         - $ref: '#/parameters/page'
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q_name'
+        - $ref: '#/parameters/accessible'
       responses:
         200:
           description: success
@@ -1381,6 +1382,15 @@ parameters:
     type: string
     in: query
     description: require user to have this plan (comma-separated to allow one of multiple plans)
+    required: false
+
+  accessible:
+    name: accessible
+    type: string
+    x-internal: true
+    in: query
+    enum: ['1', '0']
+    description: only show items that are accessible to the owner (default 0 = show all)
     required: false
 
 definitions:
