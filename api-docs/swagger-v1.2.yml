@@ -358,6 +358,7 @@ paths:
         - $ref: '#/parameters/per_page'
         - $ref: '#/parameters/q_name'
         - $ref: '#/parameters/accessible'
+        - $ref: '#/parameters/include_multiproduct'
       responses:
         200:
           description: success
@@ -1391,6 +1392,13 @@ parameters:
     in: query
     enum: ['1', '0']
     description: only show items that are accessible to the owner (default 0 = show all)
+    required: false
+  include_multiproduct:
+    name: include_multiproduct
+    type: boolean
+    x-internal: true
+    in: query
+    description: include the multiproduct attribute in the response
     required: false
 
 definitions:
