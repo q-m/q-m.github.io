@@ -70,8 +70,8 @@ SELECT * FROM products WHERE barcode = '8718452095551';
 
 ## A federated database connection
 
-At this moment, the two database can be queried separately. But we also want to put
-them side by side. For that, we first setup a federated database connection.
+At this moment, the two databases can be queried separately. But we also want to put
+data of both side by side. For that, we setup a federated database connection.
 
 ```sql
 \c sources
@@ -164,7 +164,7 @@ Nested Loop Left Join  (cost=100.00..139.40 rows=12 width=132)
 So far, so good. Now we'd like to add a check to the `barcode`, so that we can only store valid
 barcodes in the database. [Domain types](https://www.postgresql.org/docs/current/domains.html) are great for that.
 For this example, we'll require the length to be 8 or longer (in reality one may want to verify the check digit,
-and [normalize it a bit](2017/02/13/storing-barcodes)). We'll add the check both to the `sources` and the `products`
+and [normalize it a bit](/2017/02/13/storing-barcodes)). We'll add the check both to the `sources` and the `products`
 database.
 
 ```sql
@@ -235,7 +235,7 @@ domain can well be done. But that would take a while to implement. And perhaps t
 cases that I haven't considered that make it undesirable after all.
 
 One peculiar thing is that when you don't re-`IMPORT FOREIGN SCHEMA` after changing
-the data type, PostgreSQL still things it's an ordinary `VARCHAR` column, and will
+the data type, PostgreSQL still thinks it's an ordinary `VARCHAR` column, and will
 do the right thing. So one solution could be to manually `CREATE FOREIGN TABLE` and
 use `VARCHAR` instead of `barcode` for the data type. This requires keeping the
 definitions manually in sync.
