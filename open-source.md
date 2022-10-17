@@ -18,7 +18,7 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
-| 2022-07-13 | [madhums](https://github.com/madhums)               | Support Brave browser                   | [apparition#89](https://github.com/q-m/nutriscore-ruby)
+| 2022-07-13 | [madhums](https://github.com/madhums)               | Support Brave browser                   | [apparition#89](https://github.com/twalpole/apparition/pull/89)
 | 2202-06-23 | [Narnach](https://github.com/Narnach)               | Support custom GTINs                    | [barcodevalidation#29](https://github.com/marketplacer/barcodevalidation/pull/29)
 | 2202-03-10 | [Narnach](https://github.com/Narnach)               | Re-expose `#custom_gtin`                | [barcodevalidation#28](https://github.com/marketplacer/barcodevalidation/pull/28)
 | 2021-06-07 | [wvengen](https://github.com/wvengen)               | Release Nutri-Score computation gem     | [nutriscore-ruby](https://github.com/q-m/nutriscore-ruby)
