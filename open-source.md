@@ -18,6 +18,7 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2023-06-15 | [wvengen](https://github.com/wvengen)               | Allow configuring dedup policy          | [browsertrix-crawler#332](https://github.com/webrecorder/browsertrix-crawler/pull/332)
 | 2023-01-31 | [wvengen](https://github.com/wvengen)               | Release ReplayWeb.page Docker image     | [replayweb.page-docker](https://github.com/q-m/replayweb.page-docker)
 | 2022-07-13 | [madhums](https://github.com/madhums)               | Support Brave browser                   | [apparition#89](https://github.com/twalpole/apparition/pull/89)
 | 2022-10-07 | [Narnach](https://github.com/Narnach)               | Release QM barcodes gem                 | [questionmark-barcodes](https://github.com/q-m/questionmark-barcodes)
