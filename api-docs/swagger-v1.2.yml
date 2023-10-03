@@ -124,6 +124,8 @@ paths:
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
+        - $ref: '#/parameters/nutriscore'
+        - $ref: '#/parameters/nutriscores'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/sortProducts'
@@ -169,6 +171,8 @@ paths:
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
+        - $ref: '#/parameters/nutriscore'
+        - $ref: '#/parameters/nutriscores'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/sortProducts'
@@ -249,6 +253,8 @@ paths:
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
+        - $ref: '#/parameters/nutriscore'
+        - $ref: '#/parameters/nutriscores'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/sortProducts'
@@ -526,6 +532,8 @@ paths:
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
+        - $ref: '#/parameters/nutriscore'
+        - $ref: '#/parameters/nutriscores'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/ids_csv'
@@ -567,6 +575,8 @@ paths:
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
+        - $ref: '#/parameters/nutriscore'
+        - $ref: '#/parameters/nutriscores'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/ids_csv'
@@ -607,6 +617,8 @@ paths:
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
+        - $ref: '#/parameters/nutriscore'
+        - $ref: '#/parameters/nutriscores'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/ids_csv'
@@ -648,6 +660,8 @@ paths:
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
+        - $ref: '#/parameters/nutriscore'
+        - $ref: '#/parameters/nutriscores'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/ids_csv'
@@ -689,6 +703,8 @@ paths:
         - $ref: '#/parameters/scored'
         - $ref: '#/parameters/personal_health_scored'
         - $ref: '#/parameters/score'
+        - $ref: '#/parameters/nutriscore'
+        - $ref: '#/parameters/nutriscores'
         - $ref: '#/parameters/personal_health_score'
         - $ref: '#/parameters/personal_health_scores'
         - $ref: '#/parameters/ids_csv'
@@ -1099,6 +1115,25 @@ parameters:
     minimum: 1
     maximum: 10
     required: false
+  nutriscore:
+    x-internal: true
+    name: nutriscore
+    type: string
+    enum: ['A', 'B', 'C', 'D', 'E']
+    in: query
+    description: restrict by Nutriscore
+    required: false
+  nutriscores:
+    x-internal: true
+    name: nutriscores[]
+    type: array
+    items:
+      type: string
+      enum: ['A', 'B', 'C', 'D', 'E']
+    in: query
+    description: restrict by Nutriscores
+    required: false
+    collectionFormat: multi
   personal_health_score:
     name: personal_health_score
     type: string
@@ -1157,6 +1192,8 @@ parameters:
     - nutrient_salt DESC
     - nutrient_sugar
     - nutrient_sugar DESC
+    - nutriscore
+    - nutriscore DESC
     - personal_health_score
     - personal_health_score DESC
     - top_certificates_count
@@ -1554,6 +1591,11 @@ definitions:
       brand_name:
         type: string
         description: product brand
+      nutriscore:
+        x-internal: true
+        type: ['string', 'null']
+        enum: ['A', 'B', 'C', 'D', 'E']
+        description: Nutriscore
       personal_health_score:
         type: ['string', 'null']
         enum: ['A', 'B1', 'B2', 'C1', 'C2']
