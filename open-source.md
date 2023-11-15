@@ -18,6 +18,7 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2023-11-15 | [wvengen](https://github.com/wvengen)               | Better support for Active Storage       | [rails_admin#3656](https://github.com/railsadminteam/rails_admin/pull/3656)
 | 2023-10-24 | [wvengen](https://github.com/wvengen)               | Release scrapyd for Kubernetes          | [scrapyd-k8s](https://github.com/q-m/scrapyd-k8s)
 | 2023-06-15 | [wvengen](https://github.com/wvengen)               | Allow configuring dedup policy          | [browsertrix-crawler#332](https://github.com/webrecorder/browsertrix-crawler/pull/332)
 | 2023-01-31 | [wvengen](https://github.com/wvengen)               | Release ReplayWeb.page Docker image     | [replayweb.page-docker](https://github.com/q-m/replayweb.page-docker)
