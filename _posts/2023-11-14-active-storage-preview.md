@@ -100,3 +100,39 @@ class DirectUploadController {
 
 And so we have server-generated thumbnails, including for movies and PDFs
 (which the browser can't do).
+
+
+## Later addition: using named variants
+
+Since Rails 7.0, Active Storage allows using named variants. This has the
+benefit of a single place where to configure the specific settings for an image
+variant, and allows generating these variants in a worker (offloading the web
+process).
+
+This works great, except it breaks when we try to use the named variant in
+the `DirectUploadsController` above. It seems like named variants work only
+work after the file has been uploaded and/or variant has been generated. To
+still have the convenience of named variants, we can just get the processing
+parameters directly:
+
+
+```ruby
+# app/controllers/direct_uploads_controller.rb
+class DirectUploadsController < ActiveStorage::DirectUploadsController
+
+  private
+
+  # add thumb_url to response
+  def direct_upload_json(blob)
+    json = super(blob)
+    variant_tf = MyModel.attachment_reflections["files"].named_variants[:thumb].transformations
+    json[:thumb_url] = url_for(blob.representation(variant_tf))
+    json
+  end
+end
+```
+
+This code block contains a direct reference to the model (`MyModel`) and the
+attribute (`files`), so it is not a generic solution. This can probably be
+improved, e.g. by getting the attachment from the blob and, which contains the
+model name and attribute. But for us, it works well as it is.
