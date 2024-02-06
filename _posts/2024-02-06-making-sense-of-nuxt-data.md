@@ -70,9 +70,18 @@ def parseNuxtData(data):
   if not j[0] == ["Reactive", 1]: return
   return _parseNuxtDict(j, j[1])
 
-def _parseNuxtDict(j, d):
+ def _parseNuxtDict(j, d):
   if type(d) is dict:
     return {k: _parseNuxtDict(j, j[v]) for k,v in d.items()}
+  elif type(d) is list:
+    if not d:
+      return []
+    if d[0] == 'Ref' or d[0] == 'EmptyRef':
+      return _parseNuxtDict(j, j[d[1]])
+    elif d[0] == 'Reactive':
+      return None # not supported
+    else:
+      return [_parseNuxtDict(j, j[v]) for v in d]
   else:
     return d
 
