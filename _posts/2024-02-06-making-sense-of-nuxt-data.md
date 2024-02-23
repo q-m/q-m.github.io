@@ -80,6 +80,9 @@ def _parseNuxtDict(j, d):
       return _parseNuxtDict(j, j[d[1]])
     elif d[0] == 'Reactive':
       return None # not supported
+    elif d[0] == 'null':
+      # dict-as-list, ignoring first item
+      return {k: _parseNuxtDict(j, j[v]) for (k,v) in zip(d[1::2], d[2::2])}
     else:
       return [_parseNuxtDict(j, j[v]) for v in d]
   else:
