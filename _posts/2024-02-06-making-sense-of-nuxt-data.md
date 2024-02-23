@@ -6,7 +6,7 @@ tags: [javascript, data, spiders]
 image: /assets/nuxt-green.png
 ---
 To be able to quantify how supermarkets help society to eat healthily and
-sustainably, we need to what is on the shelves. Sometimes we need to go into
+sustainably, we need to know what is on the shelves. Sometimes we need to go into
 the shops and look at the physical products, but more often we can collect data
 online.
 
@@ -70,7 +70,7 @@ def parseNuxtData(data):
   if not j[0] == ["Reactive", 1]: return
   return _parseNuxtDict(j, j[1])
 
- def _parseNuxtDict(j, d):
+def _parseNuxtDict(j, d):
   if type(d) is dict:
     return {k: _parseNuxtDict(j, j[v]) for k,v in d.items()}
   elif type(d) is list:
