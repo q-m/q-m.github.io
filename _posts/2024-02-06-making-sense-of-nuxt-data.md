@@ -78,6 +78,8 @@ def _parseNuxtDict(j, d):
       return []
     if d[0] == 'Ref' or d[0] == 'EmptyRef':
       return _parseNuxtDict(j, j[d[1]])
+    elif d[0] == 'Set':
+      return [_parseNuxtDict(j, j[v]) for v in d[1:]]
     elif d[0] == 'Reactive':
       return None # not supported
     elif d[0] == 'null':
