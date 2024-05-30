@@ -76,7 +76,7 @@ def _parseNuxtDict(j, d):
   elif type(d) is list:
     if not d:
       return []
-    if d[0] == 'Ref' or d[0] == 'EmptyRef':
+    if d[0] == 'Ref' or d[0] == 'EmptyRef' or d[0] == 'EmptyShallowRef':
       return _parseNuxtDict(j, j[d[1]])
     elif d[0] == 'Set':
       return [_parseNuxtDict(j, j[v]) for v in d[1:]]
