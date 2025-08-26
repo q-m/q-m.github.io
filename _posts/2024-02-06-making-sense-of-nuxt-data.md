@@ -63,30 +63,31 @@ import json
 
 data = '[["Reactive",1],{"props":2},{"pageProps":3},{"locale":4,"id":5},"en-US",1234]'
 
-def parseNuxtData(data):
-  j = json.loads(data)
-  if not type(j) is list: return
-  if not len(j) > 1: return
-  if not j[0] == ["Reactive", 1]: return
-  return _parseNuxtDict(j, j[1])
+def parseNuxtData(j):
+  j = json.loads(j)
+  if type(j) is not list: return
+  if len(j) <= 1: return
+  if j[0] != ["Reactive", 1] and j[0] != ["ShallowReactive", 1]: return
+  return _parseNuxtDict(j, 1)
 
-def _parseNuxtDict(j, d):
+def _parseNuxtDict(j, idx):
+  d = j[idx] if idx >= 0 else None # idx -1 may occur
   if type(d) is dict:
-    return {k: _parseNuxtDict(j, j[v]) for k,v in d.items()}
+    return {k: _parseNuxtDict(j, v) for k,v in d.items()}
   elif type(d) is list:
     if not d:
       return []
-    if d[0] == 'Ref' or d[0] == 'EmptyRef' or d[0] == 'EmptyShallowRef':
-      return _parseNuxtDict(j, j[d[1]])
+    if d[0] in ['Ref', 'EmptyRef', 'EmptyShallowRef', 'ShallowReactive']:
+      return _parseNuxtDict(j, d[1])
     elif d[0] == 'Set':
-      return [_parseNuxtDict(j, j[v]) for v in d[1:]]
+      return [_parseNuxtDict(j, v) for v in d[1:]]
     elif d[0] == 'Reactive':
-      return None # not supported
+      pass # not supported
     elif d[0] == 'null':
       # dict-as-list, ignoring first item
-      return {k: _parseNuxtDict(j, j[v]) for (k,v) in zip(d[1::2], d[2::2])}
+      return {k: _parseNuxtDict(j, v) for (k,v) in zip(d[1::2], d[2::2])}
     else:
-      return [_parseNuxtDict(j, j[v]) for v in d]
+      return [_parseNuxtDict(j, v) for v in d]
   else:
     return d
 
