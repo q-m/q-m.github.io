@@ -109,6 +109,7 @@ done for a subset.
 * [_Vision Based Extraction of Nutrition Information from Skewed Nutrition Labels_](https://digitalcommons.usu.edu/cgi/viewcontent.cgi?referer=&httpsredir=1&article=5916&context=etd), technical thesis (related to barcode-based [NutriGlass](https://play.google.com/store/apps/details?id=org.vkedco.mobappdev.nutriglass) mobile app).
 * [_Image processing for the extraction of nutritional information from food labels_](https://scholarcommons.scu.edu/cseng_senior/42/), bachelor's thesis, with [code](https://github.com/Rsullivan00/labelRecognizer). Accuracy of each step 60-80%.
 * [_Potential OCR Software for Nutrition Facts Labels_](http://swhig.web.unc.edu/files/2012/06/Potential-OCRs-for-Nutrition-Facts-Labels.pptx) short presentation evaluating different OCR software options for nutrient recognition.
+* [_Ingredient scanner_](https://github.com/lenamerkli/ingredient-scanner/) (2024)
 
 ## Who may be able to provide this?
 
