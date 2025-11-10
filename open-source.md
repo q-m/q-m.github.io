@@ -18,6 +18,7 @@ to improve sustainability.
 
 | When       | Who                                                 | What                                    | Where                                                                                           |
 |:----------:+:---------------------------------------------------:+:----------------------------------------+:------------------------------------------------------------------------------------------------+
+| 2025-11-10 | [wvengen](https://github.com/wvengen)               | Small plugin-barman-cloud chart fix     | [cloudnative-pg/charts#720](https://github.com/cloudnative-pg/charts/pull/720)
 | 2025-01-10 | [leewesleyv](https://github.com/leewesleyv)         | Release scrapy-webarchive               | [scrapy-webarchive](https://github.com/q-m/scrapy-webarchive)
 | 2024-03-15 | [wvengen](https://github.com/wvengen)               | Fix deletion of files from storage      | [browsertrix-cloud#1600](https://github.com/webrecorder/browsertrix-cloud/pull/1600)
 | 2024-02-29 | [BoudwijnZwart](https://github.com/BoudewijnZwart)  | Use more up-to-date source data         | [fake-useragent#290](https://github.com/fake-useragent/fake-useragent/pull/290)
